@@ -1,0 +1,47 @@
+/* Estilos generales para el contenedor de la página */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* Color de fondo general */
+}
+
+/* Estilo específico para la tarjeta */
+mat-card {
+  max-width: 400px;
+  width: 100%;
+  margin: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para campos del formulario para que ocupen todo el ancho */
+mat-form-field.full-width {
+    width: 100%;
+}
+
+/* Estilo para el botón */
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Cambiar el color de fondo al pasar el mouse */
+.submit-button:hover {
+  background-color: #005cbf;
+  transform: scale(1.05);
+}
+
+/* Cambiar el estilo del botón cuando se presiona */
+.submit-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+

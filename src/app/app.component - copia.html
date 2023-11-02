@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="menu-section" *ngIf="authService.isLoggedIn()">
+    <div class="menu-container">
+      <ul class="menu-items">
+          <li (click)="navigateToComponent('moduleprojectComponent')">Proyectos</li>
+          <li (click)="navigateToComponent('activityComponent')">Actividades</li>
+          <li (click)="navigateToComponent('statisticsComponent')">Estadísticas</li>
+      </ul>
+      <button mat-raised-button color="warn" (click)="onLogout()">Cerrar Sesión</button>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div *ngIf="!authService.isLoggedIn()">
+      <app-login></app-login>
+    </div>
+    <div *ngIf="authService.isLoggedIn()">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

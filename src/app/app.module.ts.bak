@@ -1,0 +1,35 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { GraficoLineasComponent } from './grafico-lineas/grafico-lineas.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { NgChartsModule } from 'ng2-charts';
+import { ActivityComponent } from './activity/activity.component';
+import { ProjectsComponent } from './activity/projects/projects.component';
+import { DatePipe } from '@angular/common';
+import { ModuleprojectComponent } from './moduleproject/moduleproject.component';
+import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    GraficoLineasComponent,
+    LineChartComponent,
+    ActivityComponent,
+    ProjectsComponent,
+    ModuleprojectComponent,
+    MenuSidebarComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgChartsModule,
+    AppRoutingModule,
+	HttpClientModule,
+    FormsModule 
+  ],
+  providers: [DatePipe ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

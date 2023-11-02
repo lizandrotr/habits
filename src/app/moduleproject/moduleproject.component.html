@@ -1,0 +1,120 @@
+<div class="popup" *ngIf="showPopup">
+    <div class="popup-header">
+      <h3>Agregar Proyecto</h3>
+      <button class="popup-close" (click)="togglePopup()">X</button>
+    </div>
+  
+    <div class="popup-body">
+      
+      <div class="popup-field">
+        <label>
+          Descripción Proyecto
+        </label>
+        <br>
+        <input type="text" [(ngModel)]="description" >
+      </div>
+      
+      <br>
+      
+      <div class="popup-field">
+        <label>
+          Descripción Proyecto
+        </label>
+        <br>
+        <textarea [(ngModel)]="comment"></textarea>
+      </div>
+      
+
+      <div class="popup-field">
+        <label>
+          Fecha Inicio
+        </label>
+        <br>
+        <input type="date" [(ngModel)]="date_start" >
+      </div>
+
+      <br>
+
+      <div class="popup-field">
+        <label>
+          Fecha Fin
+        </label>
+        <br>
+        <input type="date" [(ngModel)]="date_end" >
+      </div>
+      <br>
+      <div class="popup-field">
+        <label>
+          Orden
+        </label>
+        <br>
+        <input type="number" [(ngModel)]="orden" >
+      </div>
+
+      <div class="popup-field">
+        <label>
+          Horas por Día
+        </label>
+        <br>
+        <input type="number" [(ngModel)]="hours_day" >
+      </div>
+      
+      <br>
+      <label>
+        <input type="checkbox" [(ngModel)]="done">
+        Realizado?
+      </label>
+    </div>
+    
+  
+    <div class="popup-footer">
+      <form (ngSubmit)="onSubmit()">
+        <!-- Campos del formulario -->
+        <button type="submit" >Guardar Proyecto</button>
+      </form>
+    </div>
+  </div>
+  
+  
+  
+  <div class="container">
+    <form class = "filter">
+      
+    </form>
+    <div class="grid" >
+      <button class="btn" (click)="agregarProyecto()" >Agregar Proyecto</button>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Descripción Proyecto</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Orden</th>
+            <th>Horas/Día</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let project of listProjects">
+                <td>{{ project.id }}</td>
+                <td>{{ project.description }}</td>
+                <td>{{ project.date_start }}</td>
+                <td>{{ project.date_finish }}</td>
+                <td>{{ project.orden}}</td>
+                <td>{{ project.hours_day}}</td>
+                <td>
+                    <button class="btn btn-link" (click)="getProjectById(project)"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-link" (click)="eliminarProject(project)"><i class="fas fa-trash"></i></button>    
+                </td> 
+            </tr>
+        </tbody>
+      </table>
+  
+  
+    </div>
+    
+    
+  </div>
+  

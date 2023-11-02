@@ -1,0 +1,257 @@
+.table_habits {
+    border-collapse: collapse;
+    margin: 10px;
+    //width: 70%;
+  }
+  
+  th {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  th,
+  td {
+    border: 1px solid black;
+    padding: 5px;
+    white-space: normal;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #0077cc;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  .popup-header h3 {
+    margin: 0;
+  }
+  
+  .popup-close {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .popup-close:hover {
+    text-decoration: underline;
+  }
+  
+  .popup-body {
+    padding: 10px;
+  }
+  
+  .popup-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  .popup-save {
+    border: none;
+    background-color: #0077cc;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .popup-save:hover {
+    background-color: #005faa;
+  }
+  
+  .container {
+    position: relative;
+  }
+  
+  /*table {
+    width: 80%; 
+  }*/
+  .btn {
+    margin: 10px; /* ajusta el margen según tu preferencia */
+  }
+
+  .timer-container{
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+  }
+  .filter {
+    margin: 10px; /* ajusta el margen según tu preferencia */
+  }
+  
+  .running {
+    background-color: #36F702!important; /* Verde claro */
+  }
+  /*.timer {
+    float: right;
+    //border: 1px solid red;
+  }*/
+
+  .tachado {
+    text-decoration: line-through;
+    background-color: #36F702!important;
+  }
+
+  .proyecto-container {
+    display: flex; /* Establece la disposición en flexbox */
+    align-items: center; /* Centra verticalmente los elementos */
+  }
+  
+  .description-bold {
+    font-weight: bold; /* Aplica negrita al texto */
+  }
+  
+  .descripcion-container{
+    display: flex; /* Establece la disposición en flexbox */
+    align-items: center; /* Centra verticalmente los elementos */
+  }
+
+  .hours-container{
+    display: flex; /* Establece la disposición en flexbox */
+    align-items: center; /* Centra verticalmente los elementos */
+  }
+
+  .date-container{
+    display: flex; /* Establece la disposición en flexbox */
+    align-items: center; /* Centra verticalmente los elementos */
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid black; /* Agrega borde solo en la parte inferior */
+  }
+  
+  th, td {
+    border-left: none; /* Elimina el borde izquierdo */
+    border-right: none; /* Elimina el borde derecho */
+  }
+
+  
+  
+  /* Estilos para la tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px; /* Espacio entre la tabla y otros elementos */
+}
+
+/* Estilos para las celdas */
+td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+/* Estilo para resaltar la fila cuando está marcada como 'done' */
+tr.tachado {
+  background-color: #f5f5f5;
+  text-decoration: line-through;
+}
+
+/* Estilo para resaltar la fila cuando está en progreso */
+td.running {
+  background-color: #e0f7fa; /* Color de fondo para resaltar */
+}
+
+/* Estilos para el círculo de progreso */
+app-circle-progress {
+  margin-right: 10px; /* Espacio entre el círculo y otros elementos */
+}
+
+/* Estilos para los botones */
+.btn-link {
+  text-decoration: none;
+  color: #007BFF;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.description-cell  {
+  word-wrap: break-word;
+}
+
+.action-buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.first-td {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.date-input {
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.select-filter {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.filter-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: #2980b9;
+}
+

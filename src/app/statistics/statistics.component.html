@@ -1,0 +1,17 @@
+<div class="container">
+    <form class="filter">
+      <app-projects (projectSelected)="onProjectfilter($event)"></app-projects>
+      <input type="date" [(ngModel)]="startDate" name="startDate" class="date-input">
+      <input type="date" [(ngModel)]="date_end" name="date_end" class="date-input">
+      <select [(ngModel)]="stateFilter" name="stateFilter" class="select-filter">
+        <option value="">Selecciona una opción</option>
+        <option value="true">Tareas realizadas</option>
+        <option value="false">Tareas pendientes</option>
+      </select>
+      <button type="submit" (click)="filterActivity()" class="filter-button">Filtrar</button>
+    </form>
+</div>
+
+<div *ngIf="showGraphic">
+    <app-line-chart></app-line-chart>    
+</div>

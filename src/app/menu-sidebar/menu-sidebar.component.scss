@@ -1,0 +1,25 @@
+.menu-container {
+  width: 200px; /* Ancho del menú */
+  height: 100vh; /* Altura completa de la ventana */
+  background-color: #f5f5f5; /* Color de fondo del menú */
+  position: fixed; /* Posición fija */
+  left: 0; /* A la izquierda */
+  top: 0; /* En la parte superior */
+  overflow-y: auto; /* Si el menú es más largo que la ventana, permite el desplazamiento */
+}
+
+.menu-items {
+  list-style-type: none; /* Elimina los puntos de la lista */
+  padding: 0; /* Sin relleno */
+  margin: 0; /* Sin margen */
+}
+
+.menu-items li {
+  padding: 10px 15px; /* Espacio alrededor de los ítems del menú */
+  cursor: pointer; /* Cambia el cursor al pasar sobre un ítem del menú */
+  border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre ítems */
+}
+
+.menu-items li:hover {
+  background-color: #ddd; /* Color de fondo al pasar el cursor sobre un ítem del menú */
+}

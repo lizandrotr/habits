@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { AuthService } from './service/auth.service'; 
-import { Router , NavigationEnd} from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +12,10 @@ export class AppComponent {
   title = 'habits';
   dates: string[] = ['2023-10-01', '2023-10-02', '2023-10-03'];
   hours: number[] = [2, 1.5, 1.8];
-  isLoginRoute: boolean = true;
 
   constructor(public authService: AuthService, private router: Router) {
-    console.log("AppComponent");
+    console.log("*****AppComponent*****");
+    //localStorage.removeItem('userToken');
   }
 
   navigateToComponent(componentName: string) {
@@ -36,16 +36,6 @@ export class AppComponent {
 
   onLogout() {
     this.authService.logout();  
-    this.router.navigate(['/']); 
-  }
-
-  ngOnInit() {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: any) => {
-      const navigationEndEvent = event as NavigationEnd;
-      this.isLoginRoute = navigationEndEvent.urlAfterRedirects === '/login' || navigationEndEvent.urlAfterRedirects === '/';
-    });
-    
+    this.router.navigate(['/login']); 
   }
 }

@@ -1,0 +1,127 @@
+table {
+    border-collapse: collapse;
+    margin: 10px;
+    width: 75%;
+  }
+  
+  th {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  th,
+  td {
+    border: 1px solid black;
+    padding: 5px;
+    white-space: normal;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #0077cc;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  .popup-header h3 {
+    margin: 0;
+  }
+  
+  .popup-close {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .popup-close:hover {
+    text-decoration: underline;
+  }
+  
+  .popup-body {
+    padding: 10px;
+  }
+  
+  .popup-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  .popup-save {
+    border: none;
+    background-color: #0077cc;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .popup-save:hover {
+    background-color: #005faa;
+  }
+  
+  .container {
+    position: relative;
+  }
+  
+  table {
+    width: 80%; /* asegura que la tabla ocupe todo el ancho del contenedor */
+    /* cualquier otro estilo que desees agregar para la tabla */
+  }
+  .btn {
+    margin: 10px; /* ajusta el margen según tu preferencia */
+  }
+
+  .timer-container{
+    text-align: right;
+    width: 80%; /* ajusta el margen según tu preferencia */
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .filter {
+    margin: 10px; /* ajusta el margen según tu preferencia */
+  }
+  
+  .running {
+    background-color: #36F702!important; /* Verde claro */
+  }
+  /*.timer {
+    float: right;
+    //border: 1px solid red;
+  }*/
+
+  .tachado {
+    text-decoration: line-through;
+    background-color: #36F702!important;
+  }

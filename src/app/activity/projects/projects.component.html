@@ -1,0 +1,5 @@
+
+<select (change)="onSelect($event)" class="select-filter">
+  <option value = "0">Seleccionar un valor</option>
+  <option *ngFor="let project of projects" [value]="project.id" [selected]="project.id === idProjectRecibido">{{project.description}}</option>
+</select>

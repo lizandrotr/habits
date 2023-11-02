@@ -1,0 +1,160 @@
+
+<div class="popup" *ngIf="showPopup">
+  <div class="popup-header">
+    <h3>Agregar Actividad</h3>
+    <button class="popup-close" (click)="togglePopup()">X</button>
+  </div>
+
+  <div class="popup-body" >
+    <app-projects [idProjectRecibido]="idProjectRecibido"></app-projects>
+    <!-- Textarea -->
+    <br>
+    <textarea [(ngModel)]="description"></textarea>
+    <br>
+    <!-- Campo de entrada de hora -->
+    <input type="number" [(ngModel)]="hours" step="0.01">
+    <br>
+    
+    <!-- Campo de entrada de fecha -->
+    <input type="date" [(ngModel)]="date_start">
+    <br>
+    <!-- Dos campos de bandera -->
+    <!--<label>
+      <input type="checkbox" [(ngModel)]="state">
+      
+      Estado
+    </label>-->
+    <br>
+    <label>
+      <input type="checkbox" [(ngModel)]="done">
+      Tarea Realizada?
+    </label>
+  </div>
+  
+
+  <div class="popup-footer">
+    <form (ngSubmit)="onSubmit()">
+      <!-- Campos del formulario -->
+      <button type="submit">Guardar Actividad</button>
+    </form>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <form class="filter">
+    <app-projects (projectSelected)="onProjectfilter($event)"></app-projects>
+    <input type="date" [(ngModel)]="startDate" name="startDate" class="date-input">
+    <input type="date" [(ngModel)]="date_end" name="date_end" class="date-input">
+    <select [(ngModel)]="stateFilter" name="stateFilter" class="select-filter">
+      <option value="">Selecciona una opción</option>
+      <option value="true">Tareas realizadas</option>
+      <option value="false">Tareas pendientes</option>
+    </select>
+    <button type="submit" (click)="filterActivity()" class="filter-button">Filtrar</button>
+  </form>
+  
+  
+  <div class="grid" >
+    <button class="btn" (click)="openPopupAgregar()">Agregar Actividad</button>
+    
+    
+    <!--<table>
+      <thead>
+        <tr>
+          <th>Proyecto</th>
+          <th>Descripcion</th>
+          <th>Horas</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+          <th>Cronometro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let activities of listActivities" [ngClass]="{'tachado': activities.done}">
+          <td style="border: 1px solid black; padding: 0;">
+              {{activities.descriptionProject ? activities.descriptionProject : 'Otros' }}
+          </td>
+          <td>{{activities.description}}</td>
+          <td [ngClass]="{'running': activities.isRunningWatch}">
+            <app-circle-progress [valorActual]="activities.hours" [valorMaximo]="activities.hours_day"></app-circle-progress>
+            <div class="timer"  >
+              {{(activities.timeElapsed == null) ? '00:00:00' : 
+                  formatTime(activities).hours + ':' + formatTime(activities).minutes + ':' + formatTime(activities).seconds
+              }}
+            </div>
+            <button class="btn btn-link" (click)="startTimer(activities)"><i class="fas fa-stopwatch"></i></button>
+            <button [disabled]="!activities.isRunningWatch" (click)="stopTimer(activities)"><i class="fas fa-stopwatch"></i>Stop</button>
+            <button [disabled]="!activities.isRunningWatch" (click)="saveTime(activities)"><i class="fas fas fa-save"></i>Save</button>
+          
+          </td>
+          <td>{{activities.date_start}}</td>
+          <td>
+            <button class="btn btn-link" (click)="getActivityById(activities)"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-link" (click)="eliminarActivity(activities)"><i class="fas fa-trash"></i></button>
+          </td>
+          <td [ngClass]="{'running': activities.isRunningWatch}">
+            <div class="timer"  >
+              {{(activities.timeElapsed == null) ? '00:00:00' : 
+                  formatTime(activities).hours + ':' + formatTime(activities).minutes + ':' + formatTime(activities).seconds
+              }}
+            </div>
+            <button class="btn btn-link" (click)="startTimer(activities)"><i class="fas fa-stopwatch"></i></button>
+            <button [disabled]="!activities.isRunningWatch" (click)="stopTimer(activities)"><i class="fas fa-stopwatch"></i>Stop</button>
+            <button [disabled]="!activities.isRunningWatch" (click)="saveTime(activities)"><i class="fas fas fa-save"></i>Save</button>
+          </td>
+      </tr>
+      </tbody>
+    </table>-->
+
+    <div class="timer-container">
+      TOTAL DE HORAS: {{resultSumActivities}}
+    </div>
+
+    <table class="table_habits">
+      
+      <thead>
+        <tr>
+          <th>Proyecto</th>
+          <th>Descripción</th>
+          <th>Progreso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--<tr *ngFor="let activities of listActivities" [ngClass]="{'tachado': activities.done}">-->
+        <tr *ngFor="let activities of listActivities" >  
+          <td style="padding: 0px; position: relative;  width: 300px;">
+            <div class="first-td">
+              {{activities.descriptionProject ? activities.descriptionProject : 'Otros' }}
+            </div>
+            <div class="description-date" style="position: absolute; bottom: 10px; border-top: 2px solid #000; margin-top: -20px;">
+              <span>{{activities.date_start}}</span>
+            </div>
+            <div class="action-buttons">
+              <button class="btn btn-link" (click)="getActivityById(activities)"><i class="fas fa-edit"></i> Edit</button>
+              <button class="btn btn-link" (click)="eliminarActivity(activities)" style="color: red;"><i class="fas fa-trash"></i> Delete</button>
+            </div>
+          </td>
+          <td class="description-cell" style="width: 300px;">
+            {{activities.description}}
+          </td>
+          <td class="progress-cell" [ngClass]="{'running': activities.isRunningWatch}" style="width: auto; display: flex; flex-direction: column; align-items: center; ">
+            <div style="margin-bottom: 10px;">
+              <app-circle-progress [valorActual]="activities.hours" [valorMaximo]="activities.hours_day"></app-circle-progress>
+            </div>
+            <div class="timer">
+              {{ (activities.timeElapsed == null) ? '00:00:00' : formatTime(activities).hours + ':' + formatTime(activities).minutes + ':' + formatTime(activities).seconds }}
+            </div>
+            <div style="display: flex; flex-direction: row;">
+              <button class="btn btn-link" (click)="startTimer(activities)"><i class="fas fa-stopwatch"></i> Start</button>
+              <button [disabled]="!activities.isRunningWatch" class="btn btn-link" (click)="stopTimer(activities)"><i class="fas fa-stopwatch"></i> Stop</button>
+              <button [disabled]="!activities.isRunningWatch" class="btn btn-link" (click)="saveTime(activities)"><i class="fas fas fa-save"></i> Save</button>
+            </div>
+          </td>                 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
