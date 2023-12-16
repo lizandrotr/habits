@@ -9,11 +9,11 @@ export class CircleProgressComponent implements OnInit {
   @Input() valorActual: number;
   @Input() valorMaximo: number;
 
-  private readonly radio = 50; // Radio del círculo
+  private readonly radio = 35; // Radio del círculo
 
   constructor() {
     this.valorActual = 0;
-    this.valorMaximo = 100;
+    this.valorMaximo = 70;
   }
 
   ngOnInit() {}

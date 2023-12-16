@@ -7,6 +7,7 @@ import { ActivityCronometro } from '../models/activityCronometro.model';
 import { ActivityService } from '../service/activity.service';
 import { DatePipe } from '@angular/common';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ConfigService } from '../service/config.service';
 
 @Component({
   selector: 'app-moduleproject',
@@ -17,8 +18,10 @@ export class ModuleprojectComponent implements OnInit{
   
   constructor( private http: HttpClient,
     private projectsService: ProjectService, private activityService: ActivityService, private changeDetectorRef: ChangeDetectorRef, 
-    private datePipe: DatePipe,private jwtHelper: JwtHelperService) { 
+    private datePipe: DatePipe,private jwtHelper: JwtHelperService, private configService: ConfigService) { 
       
+      this.apiURL = this.configService.getConfig('apiUrl');
+
       const token = localStorage.getItem('userToken');
       //console.log("tokeeeen:",token);
       let decodedToken: any = null; 
@@ -33,7 +36,7 @@ export class ModuleprojectComponent implements OnInit{
       console.log("token userID:",userId);
     }
 
-  private apiURL = 'https://localhost:7114/api/Project/register_update_project';  
+  private apiURL = '';  
   //private apiURL = 'http://localhost:8082/api/Project/register_update_project';
 
   id: number =0;
@@ -54,7 +57,21 @@ export class ModuleprojectComponent implements OnInit{
 
   ngOnInit(): void {
     this.listaProjects();
+
+    /*this.configService.loadConfigToService().then(() => {
+      this.setupComponent();
+    });*/
   }
+
+  /*setupComponent() {
+    const apiUrl = this.configService.getConfig('apiUrl');
+    if (apiUrl) {
+      console.log("****setupComponent****");
+      this.apiURL = this.configService.getConfig('apiUrl')+'Project/register_update_project';
+    } else {
+      console.log("****else setupComponent****");
+    }
+  }*/
 
   /*getProjectById(project: Projects){
     this.showPopup = true;
@@ -71,11 +88,11 @@ export class ModuleprojectComponent implements OnInit{
   
   onSubmit() {
     // Aquí es donde puedes agregar la lógica para guardar los datos
-    console.log('Los datos se han guardado correctamente****');
+    console.log('Los datos se han guardado correctamente****', this.apiURL);
     
     //if(this.popupEdit == false ){  
     
-    const url = `${this.apiURL}`;
+    const url = `${this.apiURL}` + 'Project/register_update_project';
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',

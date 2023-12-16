@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       
       this.authService.login(credentials).subscribe(
         response => {
-          console.log('login :::: Token:', response.token);
+          console.log('login ++++++ Token:', response.token);
           this.authService.saveToken(response.token);
           
           this.router.navigate(['']);

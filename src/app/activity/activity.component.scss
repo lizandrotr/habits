@@ -5,9 +5,9 @@
   }
   
   th {
-    background-color: blue;
-    color: white;
-    font-weight: bold;
+    /*background-color: blue;*/
+    color: #44546f;
+    //font-weight: bold;
     padding: 5px;
     text-align: left;
     white-space: nowrap;
@@ -15,7 +15,7 @@
   
   th,
   td {
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     padding: 5px;
     white-space: normal;
   }
@@ -91,9 +91,9 @@
     background-color: #005faa;
   }
   
-  .container {
+  /*.container {
     position: relative;
-  }
+  }*/
   
   /*table {
     width: 80%; 
@@ -153,16 +153,10 @@
     border-collapse: collapse;
   }
   
-  table, th, td {
-    border: 1px solid black; /* Agrega borde solo en la parte inferior */
-  }
-  
   th, td {
     border-left: none; /* Elimina el borde izquierdo */
     border-right: none; /* Elimina el borde derecho */
   }
-
-  
   
   /* Estilos para la tabla */
 .table {
@@ -172,10 +166,6 @@
 }
 
 /* Estilos para las celdas */
-td {
-  border: 1px solid black;
-  padding: 10px;
-}
 
 /* Estilo para resaltar la fila cuando está marcada como 'done' */
 tr.tachado {
@@ -213,7 +203,6 @@ app-circle-progress {
 
 .action-buttons {
   position: absolute;
-  bottom: 0;
   right: 0;
 }
 
@@ -255,3 +244,35 @@ app-circle-progress {
   background-color: #2980b9;
 }
 
+.top-text {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  font-size: 16px; /* Ejemplo de tamaño de fuente */
+  text-align: center; /* Centra el texto horizontalmente */
+  background-color: #f0f0f0; /* Ejemplo de color de fondo */
+  padding: 5px 0; /* Ejemplo de relleno para dar espacio alrededor del texto */
+}
+
+.activities_container {
+  //display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 300px;
+  vertical-align: top;
+}
+
+.activities_project,
+.activities_description {
+  width: 100%;
+}
+
+.activities_project{
+  width: 100%;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.description-date {
+  margin-bottom: 10px;
+}

@@ -34,7 +34,7 @@ constructor(private miServicio: SisProdApiService, private http: HttpClient,
   startDate: string = ''; 
   stateFilter: string = ""; 
 
-  private apiURL = 'http://localhost:8082/api/Activity?ProjectId=';
+  //private apiURL = 'http://localhost:8082/api/Activity?ProjectId=';
   
   projects: any;
   id: number =0;

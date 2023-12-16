@@ -117,39 +117,43 @@
       <thead>
         <tr>
           <th>Proyecto</th>
-          <th>Descripción</th>
+          
           <th>Progreso</th>
         </tr>
       </thead>
       <tbody>
         <!--<tr *ngFor="let activities of listActivities" [ngClass]="{'tachado': activities.done}">-->
         <tr *ngFor="let activities of listActivities" >  
-          <td style="padding: 0px; position: relative;  width: 300px;">
-            <div class="first-td">
+          <td class="activities_container" style="position: relative"> <!-- Asegúrate de que haya suficiente espacio en la parte inferior para el div description-date -->
+            <div class="activities_project">
               {{activities.descriptionProject ? activities.descriptionProject : 'Otros' }}
             </div>
-            <div class="description-date" style="position: absolute; bottom: 10px; border-top: 2px solid #000; margin-top: -20px;">
+            <div class="activities_description" style="text-align: justify;">
+              {{activities.description}}
+            </div> 
+            <div class="description-date" style="margin-bottom: 0; width: 80%; border-top: 2px solid #000;">
               <span>{{activities.date_start}}</span>
             </div>
-            <div class="action-buttons">
+          </td>
+          
+          <td class="progress-cell" [ngClass]="{'running': activities.isRunningWatch}" style="width: auto; display: flex; flex-direction: column; align-items: flex-end; ">
+            <div style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <app-circle-progress [valorActual]="activities.hours" [valorMaximo]="activities.hours_day"></app-circle-progress>
+                <div class="timer">
+                  {{ (activities.timeElapsed == null) ? '00:00:00' : formatTime(activities).hours + ':' + formatTime(activities).minutes + ':' + formatTime(activities).seconds }}
+                </div>
+              </div>
+              <div class="control-timer" style="display: flex; flex-direction: column; justify-content: center; margin-left: 10px;">
+                <button class="btn btn-link" (click)="startTimer(activities)"><i class="fas fa-stopwatch"></i> Start</button>
+                <button [disabled]="!activities.isRunningWatch" class="btn btn-link" (click)="stopTimer(activities)"><i class="fas fa-stopwatch"></i> Stop</button>
+                <button [disabled]="!activities.isRunningWatch" class="btn btn-link" (click)="saveTime(activities)"><i class="fas fas fa-save"></i> Save</button>
+              </div>
+            </div>
+            
+            <div class = "actions-button" style="display: flex; flex-direction: row;">
               <button class="btn btn-link" (click)="getActivityById(activities)"><i class="fas fa-edit"></i> Edit</button>
-              <button class="btn btn-link" (click)="eliminarActivity(activities)" style="color: red;"><i class="fas fa-trash"></i> Delete</button>
-            </div>
-          </td>
-          <td class="description-cell" style="width: 300px;">
-            {{activities.description}}
-          </td>
-          <td class="progress-cell" [ngClass]="{'running': activities.isRunningWatch}" style="width: auto; display: flex; flex-direction: column; align-items: center; ">
-            <div style="margin-bottom: 10px;">
-              <app-circle-progress [valorActual]="activities.hours" [valorMaximo]="activities.hours_day"></app-circle-progress>
-            </div>
-            <div class="timer">
-              {{ (activities.timeElapsed == null) ? '00:00:00' : formatTime(activities).hours + ':' + formatTime(activities).minutes + ':' + formatTime(activities).seconds }}
-            </div>
-            <div style="display: flex; flex-direction: row;">
-              <button class="btn btn-link" (click)="startTimer(activities)"><i class="fas fa-stopwatch"></i> Start</button>
-              <button [disabled]="!activities.isRunningWatch" class="btn btn-link" (click)="stopTimer(activities)"><i class="fas fa-stopwatch"></i> Stop</button>
-              <button [disabled]="!activities.isRunningWatch" class="btn btn-link" (click)="saveTime(activities)"><i class="fas fas fa-save"></i> Save</button>
+              <button class="btn btn-link" (click)="eliminarActivity(activities)" style="color: red;"><i class="fas fa-trash"></i> Delete</button> 
             </div>
           </td>                 
         </tr>

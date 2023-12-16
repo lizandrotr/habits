@@ -1,13 +1,12 @@
 table {
     border-collapse: collapse;
     margin: 10px;
-    width: 75%;
   }
   
   th {
-    background-color: blue;
-    color: white;
-    font-weight: bold;
+    /*background-color: blue;*/
+    color: #44546f;
+    //font-weight: bold;
     padding: 5px;
     text-align: left;
     white-space: nowrap;
@@ -15,10 +14,23 @@ table {
   
   th,
   td {
-    border: 1px solid black;
+    //border-top: 1px solid black;
+    border-bottom: 1px solid black;
     padding: 5px;
     white-space: normal;
   }
+
+  .control-timer{
+    position: relative;
+  }
+
+  /*th:first-child, td:first-child {
+    border-left: 1px solid black;
+}*/
+
+/*th:last-child, td:last-child {
+    border-right: 1px solid black;
+}*/
   
   tbody tr:nth-child(even) {
     background-color: #f2f2f2;
@@ -91,17 +103,39 @@ table {
     background-color: #005faa;
   }
   
-  .container {
+  /*.container {
     position: relative;
+  }*/
+  
+  .btn {
+    margin: 10px; /* Espaciado alrededor del botón */
+    padding: 10px 20px; /* Espaciado interno del botón, ajusta según necesites */
+    background-color: #005faa; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Eliminar el borde por defecto */
+    border-radius: 5px; /* Esquinas redondeadas del botón */
+    font-size: 12px; /* Tamaño del texto */
+    font-weight: bold; /* Peso del texto */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    cursor: pointer; /* Cambiar el cursor a un puntero */
+    transition: background-color 0.3s, transform 0.2s; /* Suavizar la transición de colores y transformaciones */
+    text-align: center; /* Asegurar que el texto esté centrado */
+    text-decoration: none; /* Quitar la decoración del texto */
+    display: inline-block; /* Permitir que se le apliquen márgenes y padding */
   }
   
-  table {
-    width: 80%; /* asegura que la tabla ocupe todo el ancho del contenedor */
-    /* cualquier otro estilo que desees agregar para la tabla */
+  .btn:hover {
+    background-color: #0077cc; /* Color de fondo al pasar el mouse */
+    transform: translateY(-2px); /* Mover el botón ligeramente hacia arriba */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar sensación de elevación */
   }
-  .btn {
-    margin: 10px; /* ajusta el margen según tu preferencia */
+  
+  .btn:active {
+    background-color: #003d66; /* Color de fondo al hacer clic */
+    transform: translateY(1px); /* Mover el botón hacia abajo al presionarlo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más sutil */
   }
+  
 
   .timer-container{
     text-align: right;
@@ -116,12 +150,122 @@ table {
   .running {
     background-color: #36F702!important; /* Verde claro */
   }
-  /*.timer {
-    float: right;
-    //border: 1px solid red;
-  }*/
-
+  
   .tachado {
     text-decoration: line-through;
     background-color: #36F702!important;
+  }
+
+  .grid{
+    width: 100%;
+  }
+
+  .grid-table{
+    width: 80%;
+  }
+  
+  .btn-edit, .btn-delete {
+    border: none;
+    cursor: pointer;
+    background: none; /* Transparente para que solo se vea la imagen */
+    padding: 0; /* Elimina el relleno predeterminado de los botones */
+  }
+  
+  .btn-edit img, .btn-delete img{
+    width: 40px; /* Ajusta al tamaño de tu imagen */
+    height: 40px; /* Ajusta al tamaño de tu imagen */
+  }
+
+  /*Estilos CSS PopUp*/
+
+  .popup-body {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .popup-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Aumento del margen entre filas */
+  }
+  
+  .popup-field {
+    flex-basis: 48%; /* Ajuste para dos columnas */
+    margin-bottom: 20px; /* Aumento del margen en la parte inferior de cada campo */
+  }
+  
+  .comment-field {
+    flex-basis: 100%;
+    margin-bottom: 20px; /* Aumento del margen en la parte inferior del campo de comentarios */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px; /* Aumento del espacio debajo de cada etiqueta */
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  input[type="text"], input[type="date"], input[type="number"] {
+    padding: 10px; /* Aumento del padding para mayor espacio dentro de los campos */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Añadiendo margen debajo de cada campo de entrada */
+    margin-left: 10px;
+    width: 150px;
+  }
+
+  textarea{
+    width: 100%;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .checkbox-field label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox-field input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .popup-actions {
+    text-align: center;
+    margin-top: 20px; /* Aumento del margen antes de los botones de acción */
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .popup-field.comment-field {
+    box-sizing: border-box; /* Incluye el padding y el border en el cálculo del ancho */
+  }
+  
+  .popup-field.comment-field textarea {
+    width: 100%; /* Asegúrate de que el textarea ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Incluye el padding y el border en el cálculo del ancho */
+    border: 1px solid #ccc; /* Estilo opcional para el textarea */
+    padding: 5px; /* Espacio interno para el textarea */
+    resize: vertical; /* Permite al usuario redimensionar solo verticalmente */
   }

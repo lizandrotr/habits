@@ -8,6 +8,7 @@ import { ActivityCronometro } from '../models/activityCronometro.model';
 import { ActivityService } from '../service/activity.service';
 import { DatePipe } from '@angular/common';
 import { DataService } from '../service/data.service'; // Importa tu servicio
+import { ConfigService } from '../service/config.service';
 
 @Component({
   selector: 'app-activity',
@@ -19,7 +20,12 @@ export class ActivityComponent implements OnInit  {
   
   constructor(private miServicio: SisProdApiService, private http: HttpClient,
      private projectsService: ProjectsService, private changeDetectorRef: ChangeDetectorRef, 
-     private activityService: ActivityService, private datePipe: DatePipe, private dataService: DataService) { }
+     private activityService: ActivityService, private datePipe: DatePipe, private dataService: DataService
+     , private configService: ConfigService) {
+      
+        this.apiURL = this.configService.getConfig('apiUrl') + 'Activity?ProjectId=';
+        console.log("Activity url++++ :::" + this.apiURL);
+     }
   
   
 
@@ -35,8 +41,8 @@ export class ActivityComponent implements OnInit  {
   startDate: string = ''; 
   stateFilter: string = ""; 
 
-  private apiURL = 'https://localhost:7114/api/Activity?ProjectId=';
-  
+  //private apiURL = 'https://localhost:7114/api/Activity?ProjectId=';
+  private apiURL = '';
   projects: any;
   id: number =0;
   ProjectId: number = 0;

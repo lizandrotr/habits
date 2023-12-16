@@ -4,7 +4,7 @@
       <button class="popup-close" (click)="togglePopup()">X</button>
     </div>
   
-    <div class="popup-body">
+    <!--<div class="popup-body">
       
       <div class="popup-field">
         <label>
@@ -64,15 +64,65 @@
         <input type="checkbox" [(ngModel)]="done">
         Realizado?
       </label>
+    </div>-->
+    <div class="popup-body">
+      <div class="popup-row" >
+        <div class="popup-field">
+          <label for="description">Descripción Proyecto</label>
+          <input type="text" id="description" [(ngModel)]="description">
+        </div>
+    
+        <div class="popup-field">
+          <label for="hours_day">Horas por Día</label>
+          <input type="number" id="hours_day" [(ngModel)]="hours_day">
+        </div>
+      </div>
+    
+      <div class="popup-row">
+        <div class="popup-field">
+          <label for="date_start">Fecha Inicio</label>
+          <input type="date" id="date_start" [(ngModel)]="date_start">
+        </div>
+
+        <div class="popup-field">
+          <label for="date_end">Fecha Fin</label>
+          <input type="date" id="date_end" [(ngModel)]="date_end">
+        </div>
+      </div>
+    
+      <div class="popup-row">
+        <div class="popup-field">
+          <label for="orden">Orden</label>
+          <input type="number" id="orden" [(ngModel)]="orden">
+        </div>
+
+        <div class="popup-field checkbox-field">
+          <label>
+            <input type="checkbox" id="done" [(ngModel)]="done"> Realizado?
+          </label>
+        </div>
+      </div>
+      
+      <div class="popup-row">
+        <div class="popup-field comment-field">
+          <label for="comment">Comentarios</label>
+          <textarea id="comment" [(ngModel)]="comment"></textarea>
+        </div>
+      </div>
+    
+      <div class="popup-actions">
+        <button type="button" >Guardar</button>
+        <button type="button" >Cancelar</button>
+      </div>
     </div>
     
+    
   
-    <div class="popup-footer">
+    <!--<div class="popup-footer">
       <form (ngSubmit)="onSubmit()">
-        <!-- Campos del formulario -->
-        <button type="submit" >Guardar Proyecto</button>
+        <button type="submit" >Guardar Proyectooo</button>
       </form>
-    </div>
+    </div>-->
   </div>
   
   
@@ -84,29 +134,32 @@
     <div class="grid" >
       <button class="btn" (click)="agregarProyecto()" >Agregar Proyecto</button>
       
-      <table>
+      <table class="grid-table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Descripción Proyecto</th>
-            <th>Fecha Inicio</th>
-            <th>Fecha Fin</th>
+            <th>Hábitos</th>
+            <th>Fecha de Inicio</th>
+            <th>Vencimiento</th>
             <th>Orden</th>
-            <th>Horas/Día</th>
+            <th>Horas</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
             <tr *ngFor="let project of listProjects">
-                <td>{{ project.id }}</td>
+                <!--<td>{{ project.id }}</td>-->
                 <td>{{ project.description }}</td>
                 <td>{{ project.date_start }}</td>
                 <td>{{ project.date_finish }}</td>
                 <td>{{ project.orden}}</td>
                 <td>{{ project.hours_day}}</td>
                 <td>
-                    <button class="btn btn-link" (click)="getProjectById(project)"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-link" (click)="eliminarProject(project)"><i class="fas fa-trash"></i></button>    
+                    <button class="btn-edit" (click)="getProjectById(project)">
+                      <img src="assets/Images/Edit.png" alt="Editar" />
+                    </button>
+                    <button class="btn-delete" (click)="eliminarProject(project)">
+                      <img src="assets/Images/Delete.png" alt="Editar" />
+                    </button>
                 </td> 
             </tr>
         </tbody>

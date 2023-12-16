@@ -1,7 +1,12 @@
-<div class="container">
-  <div class="content-section">
+<div class="container" >
+  
+  <div class="content-section" >
     <!-- Si el usuario no está logueado, muestra el router-outlet para las rutas de login y registro -->
-    <div *ngIf="!authService.isLoggedIn()">
+    <div style="display: flex; align-items: center; border-bottom: 2px solid #f4f4f4; height: 100px;">
+      <img src="assets/Images/Torre-soft.jpeg" alt="Descriptive Alt Text" style="height: 100px; margin-right: 10px; padding: 10px;">
+    </div>
+    
+    <div *ngIf="!authService.isLoggedIn()" >
       <ng-container *ngIf="isLoginRoute; else registration">
           <app-login></app-login>
       </ng-container>
@@ -10,18 +15,27 @@
       </ng-template>
     </div>
     <!-- Si el usuario está logueado, muestra el contenido de la aplicación -->
-    <div *ngIf="authService.isLoggedIn()">
-      <div class="menu-section" *ngIf="authService.isLoggedIn()">
+    <div *ngIf="authService.isLoggedIn()" style="display: flex; flex-wrap: nowrap;">
+      
+      <div class="menu-section" *ngIf="authService.isLoggedIn()" style= "width: 300px; height: 300px; flex-shrink: 0;">
         <div class="menu-container">
           <ul class="menu-items">
-              <li (click)="navigateToComponent('moduleprojectComponent')">Proyectos</li>
-              <li (click)="navigateToComponent('activityComponent')">Actividades</li>
-              <li (click)="navigateToComponent('statisticsComponent')">Estadísticas</li>
-          </ul>
+            <li (click)="navigateToComponent('moduleprojectComponent')">
+              <img src="assets/Images/Habits.png" alt="Proyectos"> Proyectos
+            </li>
+            <li (click)="navigateToComponent('activityComponent')">
+              <img src="assets/Images/Activity.png" alt="Actividades"> Actividades
+            </li>
+            <li (click)="navigateToComponent('statisticsComponent')">
+              <img src="assets/Images/Estadistica.png" alt="Estadísticas"> Estadísticas
+            </li>
+          </ul>          
           <button mat-raised-button color="warn" (click)="onLogout()">Cerrar Sesión</button>
         </div>  
       </div>
-      <router-outlet></router-outlet>
+      <div class="body-torresoft" style=" flex-grow: 1; overflow-x: auto;width: 100%" >
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>

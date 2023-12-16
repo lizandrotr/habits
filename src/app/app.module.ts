@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
@@ -30,9 +30,16 @@ import { TestComponent } from './test/test.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ConfigService } from './service/config.service';
 
 export function tokenGetter() {
   return localStorage.getItem('userToken'); 
+}
+
+export function initializeApp(configService: ConfigService) {
+  return (): Promise<any> => {
+    return configService.loadConfigToService();
+  };
 }
 
 @NgModule({
@@ -72,7 +79,13 @@ export function tokenGetter() {
   providers: [
     DatePipe, 
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
-
+    ,ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [ConfigService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
