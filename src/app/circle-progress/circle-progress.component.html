@@ -1,23 +1,22 @@
 <svg width="80" height="80">
   <!-- Círculo base (gris) -->
-  <circle cx="40" cy="40" [attr.r]="getCircleRadius()" fill="#e0e0e0" />
+  <circle cx="40" cy="40" [attr.r]="radio" fill="#e0e0e0"></circle>
 
   <!-- Círculo de progreso (verde) -->
   <circle
     cx="40"
     cy="40"
-    [attr.r]="getCircleRadius()"
-    [attr.stroke-dasharray]="getStrokeDashArray()"
-    [attr.stroke-dashoffset]="getStrokeDashOffset()"
+    [attr.r]="radio"
+    [attr.stroke-dasharray]="strokeDashArray"
+    [ngStyle]="{'stroke-dashoffset': currentStrokeDashOffset + 'px'}"
     fill="transparent"
-    stroke="#4caf50"
+    stroke="#239089"
     stroke-width="10"
     transform="rotate(-90 40 40)"
-  />
+  ></circle>
 
   <!-- Texto de porcentaje -->
-  <text x="40" y="40" text-anchor="middle" dy=".3em" fill="black">
-    {{ calcularPorcentaje() | number: '1.0-2' }}%
-    <!--{{valorActual}}/{{valorMaximo}}-->
+  <text x="40" y="45" text-anchor="middle" fill="black">
+    {{ valorActual / valorMaximo * 100 | number: '1.0-2' }}%
   </text>
 </svg>

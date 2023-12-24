@@ -5,25 +5,20 @@
     <button class="popup-close" (click)="togglePopup()">X</button>
   </div>
 
-  <div class="popup-body" >
+  <!--<div class="popup-body" >
     <app-projects [idProjectRecibido]="idProjectRecibido"></app-projects>
-    <!-- Textarea -->
+    
     <br>
     <textarea [(ngModel)]="description"></textarea>
     <br>
-    <!-- Campo de entrada de hora -->
+    
     <input type="number" [(ngModel)]="hours" step="0.01">
     <br>
     
-    <!-- Campo de entrada de fecha -->
+    
     <input type="date" [(ngModel)]="date_start">
     <br>
-    <!-- Dos campos de bandera -->
-    <!--<label>
-      <input type="checkbox" [(ngModel)]="state">
-      
-      Estado
-    </label>-->
+   
     <br>
     <label>
       <input type="checkbox" [(ngModel)]="done">
@@ -31,13 +26,41 @@
     </label>
   </div>
   
-
   <div class="popup-footer">
     <form (ngSubmit)="onSubmit()">
-      <!-- Campos del formulario -->
       <button type="submit">Guardar Actividad</button>
     </form>
+  </div>-->
+
+  <div class="popup-body">
+    <div class="popup-row" >
+      <label for="Hábito">Hábito</label>
+      <app-projects [idProjectRecibido]="idProjectRecibido"></app-projects>
+    </div>
+
+    <div class="popup-row" >
+      <label for="hours">Horas</label>
+      <input type="number" [(ngModel)]="hours" step="0.01">
+    </div>
+  
+    <div class="popup-row">
+      <label for="fecha">Fecha</label>
+      <input type="date" [(ngModel)]="date_start">
+    </div>
+    
+
+    <div class="popup-row">
+      <label for="description">description</label>
+      <textarea [(ngModel)]="description"></textarea>
+    </div>
+
+
+    <div class="popup-actions">
+      <button type="button" (click) = "onSubmit()">Guardar</button>
+      <button type="button" >Cancelar</button>
+    </div>
   </div>
+
 </div>
 
 

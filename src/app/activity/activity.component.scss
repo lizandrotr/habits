@@ -360,3 +360,60 @@ app-circle-progress {
   transform: translateY(1px); /* Mover el botón hacia abajo al presionarlo */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más sutil */
 }
+
+/*popup actividad*/
+
+.popup-body {
+  background-color: #f9f9f9; /* Color de fondo claro */
+  border-radius: 8px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  padding: 20px; /* Espaciado interno */
+  max-width: 400px; /* Ancho máximo */
+  margin: auto; /* Centrado */
+}
+
+.popup-row {
+  margin-bottom: 15px; /* Espaciado entre filas */
+}
+
+.popup-row label {
+  display: block; /* Etiqueta en su propia línea */
+  margin-bottom: 5px; /* Espaciado entre etiqueta y campo */
+  font-weight: bold; /* Negrita para las etiquetas */
+}
+
+input[type="number"], 
+input[type="date"], 
+textarea {
+  width: 100%; /* Ancho completo */
+  padding: 8px; /* Espaciado interno */
+  border-radius: 4px; /* Esquinas redondeadas */
+  border: 1px solid #ccc; /* Borde sutil */
+  box-sizing: border-box; /* Box sizing */
+}
+
+textarea {
+  resize: vertical; /* Permitir redimensionamiento vertical */
+}
+
+.popup-actions {
+  text-align: center; /* Botones centrados */
+}
+
+.popup-actions button {
+  padding: 10px 20px; /* Espaciado interno de botones */
+  border-radius: 4px; /* Esquinas redondeadas */
+  border: none; /* Sin borde */
+  margin: 0 10px; /* Espaciado entre botones */
+  cursor: pointer; /* Cursor de mano */
+}
+
+.popup-actions button[type="button"] {
+  background-color: #4CAF50; /* Color para guardar */
+  color: white; /* Texto blanco */
+}
+
+.popup-actions button[type="button"]:nth-child(2) {
+  background-color: #f44336; /* Color para cancelar */
+  color: white; /* Texto blanco */
+}

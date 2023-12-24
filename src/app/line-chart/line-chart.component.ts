@@ -12,24 +12,20 @@ import 'chartjs-adapter-date-fns';
 })
 export class LineChartComponent implements OnInit, AfterViewInit {
 
-  // lineChartLabels: string[];  // Datos de fecha
- /* @Input() lineChartHours: number[];  // Datos de hora*/
- 
- //@Input() arrayHours: number[] = []; 
- //@Input() arrayDate: string[] = []; 
- 
- arrayHours: number[] = []; 
- arrayDate: string[] = []; 
+  arrayHours: number[] = []; 
+  arrayDate: string[] = []; 
 
- private hoursArraySubscription: Subscription = new Subscription(); // Inicializa la propiedad hoursArraySubscription
- private fechasArraySubscription: Subscription = new Subscription(); // Inicializa la propiedad fechasArraySubscription
+  private hoursArraySubscription: Subscription = new Subscription();
+  private fechasArraySubscription: Subscription = new Subscription();
 
- constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) {}
 
- lineChartData = [
+  lineChartData = [
     { 
       data: this.arrayHours,
       label: 'Horas',
+      borderColor: '#239089',  // Establece el color de la línea aquí
+      backgroundColor: '#239089'
     }
   ];
   
@@ -37,6 +33,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
   public lineChartOptions: any = {
     responsive: true,
+    maintainAspectRatio: false, // Asegura que el gráfico se adapta al tamaño del contenedor
     scales: {
       x: {
         type: 'time',
@@ -72,68 +69,22 @@ export class LineChartComponent implements OnInit, AfterViewInit {
         }
       }
     },
-    plugins: {
-      annotation: {
-        annotations: [{
-          type: 'line',
-          mode: 'horizontal',
-          scaleID: 'y',
-          value: 1.5,
-          borderColor: 'green',
-          borderWidth: 2
-        }]
-      },
-      trendline: {
-        showLine: true,
-        line: {
-          borderColor: 'rgba(255,0,0,0.3)',
-          borderWidth: 2
-        },
-        tooltip: {
-          enabled: true,
-          format: 'HH:mm'
-        }
-      }
-    }
+    // Configuraciones adicionales (si las hay)
   };
 
   public lineChartLegend = true;
   public lineChartType = 'line';
 
-
   ngOnInit() {
-
     this.hoursArraySubscription = this.dataService.hoursArray$.subscribe((data) => {
       this.arrayHours = data;
-      console.log("arrayHours:::::", this.arrayHours);
-      // Lógica para actualizar el gráfico con arrayHours
-
-      this.lineChartData = [
-        { 
-          data: this.arrayHours,
-          label: 'Horas',
-        }
-      ];
-      
-      
+      this.lineChartData[0].data = this.arrayHours;
     });
 
     this.fechasArraySubscription = this.dataService.fechasArray$.subscribe((data) => {
       this.arrayDate = data;
-      console.log("arrayDate:::::", this.arrayDate);
       this.lineChartLabels = this.arrayDate;
-      // Lógica para actualizar el gráfico con arrayDate
     });
-    
-    this.lineChartData = [
-      { 
-        data: this.arrayHours,
-        label: 'Horas',
-      }
-    ];
-
-    this.lineChartLabels = this.arrayDate;
-
   }
 
   ngAfterViewInit() {
@@ -141,8 +92,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('Cambios en los datos++++++:', changes);
-    console.log(changes);
+    // Manejo de cambios
   }
   
   addHorizontalLine() {
@@ -154,7 +104,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
         labels: this.lineChartLabels,
         datasets: [{
           data: Array(this.lineChartLabels.length).fill(average),
-          borderColor: 'green',
+          borderColor: '#239089', // Cambiar aquí para la línea horizontal
           borderWidth: 2,
           fill: false
         }]
