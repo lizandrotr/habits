@@ -1,9 +1,18 @@
 .table_habits {
     border-collapse: collapse;
     margin: 10px;
-    //width: 70%;
+    width: 65%;
   }
   
+  .activities_description {
+    text-align: justify;
+    word-wrap: break-word;
+    width: 200px; /* Define un ancho fijo */
+    min-height: 100px; /* Altura mínima inicial */
+    max-height: 500px; /* Altura máxima antes de que se aplique el scroll */
+    overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es demasiado largo */
+  }
+
   th {
     /*background-color: blue;*/
     color: #44546f;
@@ -262,10 +271,10 @@ app-circle-progress {
   vertical-align: top;
 }
 
-.activities_project,
+/*.activities_project,
 .activities_description {
   width: 100%;
-}
+}*/
 
 .activities_project{
   width: 100%;
@@ -273,6 +282,81 @@ app-circle-progress {
   padding-bottom: 20px;
 }
 
-.description-date {
-  margin-bottom: 10px;
+
+/*Botones editar y eliminar*/
+
+.btn-edit, .btn-delete {
+  border: none;
+  cursor: pointer;
+  background: none; /* Transparente para que solo se vea la imagen */
+  padding: 0; /* Elimina el relleno predeterminado de los botones */
+}
+
+.btn-edit img, .btn-delete img{
+  width: 40px; /* Ajusta al tamaño de tu imagen */
+  height: 40px; /* Ajusta al tamaño de tu imagen */
+  padding-left: 5px;
+}
+
+.btn-reloj img{
+  width: 20px; /* Ajusta al tamaño de tu imagen */
+  height: 20px; /* Ajusta al tamaño de tu imagen */
+}
+
+.btn-reloj{
+  
+  //margin: 2px; /* Espaciado alrededor del botón */
+  //padding: 5px 10px; /* Espaciado interno del botón, ajusta según necesites */
+  color: white; /* Color del texto del botón */
+  border: none; /* Eliminar el borde por defecto */
+  border-radius: 5px; /* Esquinas redondeadas del botón */
+  font-size: 8px; /* Tamaño del texto */
+  font-weight: bold; /* Peso del texto */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  cursor: pointer; /* Cambiar el cursor a un puntero */
+  transition: background-color 0.3s, transform 0.2s; /* Suavizar la transición de colores y transformaciones */
+  text-align: center; /* Asegurar que el texto esté centrado */
+  text-decoration: none; /* Quitar la decoración del texto */
+  display: inline-block; /* Permitir que se le apliquen márgenes y padding */
+}
+
+.btn-reloj:hover {
+  background-color: #0077cc; /* Color de fondo al pasar el mouse */
+  transform: translateY(-2px); /* Mover el botón ligeramente hacia arriba */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar sensación de elevación */
+}
+
+.btn-reloj:active {
+  background-color: #003d66; /* Color de fondo al hacer clic */
+  transform: translateY(1px); /* Mover el botón hacia abajo al presionarlo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más sutil */
+}
+/*estilo boton */
+.btn {
+  margin: 10px; /* Espaciado alrededor del botón */
+  padding: 10px 20px; /* Espaciado interno del botón, ajusta según necesites */
+  background-color: #005faa; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none; /* Eliminar el borde por defecto */
+  border-radius: 5px; /* Esquinas redondeadas del botón */
+  font-size: 12px; /* Tamaño del texto */
+  font-weight: bold; /* Peso del texto */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  cursor: pointer; /* Cambiar el cursor a un puntero */
+  transition: background-color 0.3s, transform 0.2s; /* Suavizar la transición de colores y transformaciones */
+  text-align: center; /* Asegurar que el texto esté centrado */
+  text-decoration: none; /* Quitar la decoración del texto */
+  display: inline-block; /* Permitir que se le apliquen márgenes y padding */
+}
+
+.btn:hover {
+  background-color: #0077cc; /* Color de fondo al pasar el mouse */
+  transform: translateY(-2px); /* Mover el botón ligeramente hacia arriba */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar sensación de elevación */
+}
+
+.btn:active {
+  background-color: #003d66; /* Color de fondo al hacer clic */
+  transform: translateY(1px); /* Mover el botón hacia abajo al presionarlo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más sutil */
 }

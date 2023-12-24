@@ -57,8 +57,8 @@
   
   
   <div class="grid" >
-    <button class="btn" (click)="openPopupAgregar()">Agregar Actividad</button>
-    
+    <!--<button class="btn" (click)="openPopupAgregar()">Agregar Actividad</button>-->
+    <button class="btn" (click)="openPopupAgregar()" >Agregar Actividad</button>
     
     <!--<table>
       <thead>
@@ -117,43 +117,52 @@
       <thead>
         <tr>
           <th>Proyecto</th>
-          
+          <th>Descripción</th>        
           <th>Progreso</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         <!--<tr *ngFor="let activities of listActivities" [ngClass]="{'tachado': activities.done}">-->
         <tr *ngFor="let activities of listActivities" >  
-          <td class="activities_container" style="position: relative"> <!-- Asegúrate de que haya suficiente espacio en la parte inferior para el div description-date -->
+          <td class="activities_container" style="position: relative; height: 100%;">
             <div class="activities_project">
               {{activities.descriptionProject ? activities.descriptionProject : 'Otros' }}
             </div>
-            <div class="activities_description" style="text-align: justify;">
-              {{activities.description}}
-            </div> 
-            <div class="description-date" style="margin-bottom: 0; width: 80%; border-top: 2px solid #000;">
+             
+            <div class="description-date" style="position: absolute; bottom: 0; left: 0; width: 80%; border-top: 2px solid #000;">
               <span>{{activities.date_start}}</span>
             </div>
+        </td>
+          <td>
+            <div class="activities_description" style="text-align: justify; word-wrap: break-word">
+              {{activities.description}}
+            </div>
           </td>
-          
-          <td class="progress-cell" [ngClass]="{'running': activities.isRunningWatch}" style="width: auto; display: flex; flex-direction: column; align-items: flex-end; ">
-            <div style="display: flex; align-items: flex-start; margin-bottom: 10px;">
-              <div style="display: flex; flex-direction: column; align-items: center;">
+          <td>
+            <div style="align-items: flex-start">
+              <div style=" flex-direction: column; align-items: center;text-align: center;">
                 <app-circle-progress [valorActual]="activities.hours" [valorMaximo]="activities.hours_day"></app-circle-progress>
                 <div class="timer">
                   {{ (activities.timeElapsed == null) ? '00:00:00' : formatTime(activities).hours + ':' + formatTime(activities).minutes + ':' + formatTime(activities).seconds }}
                 </div>
               </div>
-              <div class="control-timer" style="display: flex; flex-direction: column; justify-content: center; margin-left: 10px;">
-                <button class="btn btn-link" (click)="startTimer(activities)"><i class="fas fa-stopwatch"></i> Start</button>
-                <button [disabled]="!activities.isRunningWatch" class="btn btn-link" (click)="stopTimer(activities)"><i class="fas fa-stopwatch"></i> Stop</button>
-                <button [disabled]="!activities.isRunningWatch" class="btn btn-link" (click)="saveTime(activities)"><i class="fas fas fa-save"></i> Save</button>
+              <div class="control-timer" style="display: flex; flex-direction: row; justify-content: center; margin-left: 10px;">
+                <!--<button class="btn btn-link" (click)="startTimer(activities)"><i class="fas fa-stopwatch"></i> Start</button>-->
+                <button class="btn-reloj" (click)="startTimer(activities)"><img src="assets/Images/Start.png" alt="Start" /></button>            
+                <button [disabled]="!activities.isRunningWatch" class="btn-reloj" (click)="stopTimer(activities)"><img src="assets/Images/Stop.png" alt="Start" /></button>            
+                <button [disabled]="!activities.isRunningWatch" class="btn-reloj" (click)="saveTime(activities)"><img src="assets/Images/Guardar.png" alt="Save" /></button>            
+                <!--<button [disabled]="!activities.isRunningWatch" class="btn btn-link" (click)="stopTimer(activities)"><i class="fas fa-stopwatch"></i> Stop</button>-->
+                <!--<button [disabled]="!activities.isRunningWatch" class="btn btn-link" (click)="saveTime(activities)"><i class="fas fas fa-save"></i> Save</button>-->
               </div>
             </div>
-            
+          </td>
+          
+          <td class="progress-cell" [ngClass]="{'running': activities.isRunningWatch}" >
             <div class = "actions-button" style="display: flex; flex-direction: row;">
-              <button class="btn btn-link" (click)="getActivityById(activities)"><i class="fas fa-edit"></i> Edit</button>
-              <button class="btn btn-link" (click)="eliminarActivity(activities)" style="color: red;"><i class="fas fa-trash"></i> Delete</button> 
+              <button class="btn-edit" (click)="getActivityById(activities)"><img src="assets/Images/Edit.png" alt="Editar" /></button>
+              <button class="btn-delete" (click)="eliminarActivity(activities)"><img src="assets/Images/Delete.png" alt="Editar" /></button>
+              <!--<button class="btn btn-link" (click)="eliminarActivity(activities)" style="color: red;"><i class="fas fa-trash"></i> Delete</button> -->
             </div>
           </td>                 
         </tr>
