@@ -9,6 +9,7 @@ import { ActivityService } from '../service/activity.service';
 import { DatePipe } from '@angular/common';
 import { DataService } from '../service/data.service'; // Importa tu servicio
 import { ConfigService } from '../service/config.service';
+import { PulseService } from '../service/pulse.service';
 
 @Component({
   selector: 'app-activity',
@@ -21,7 +22,7 @@ export class ActivityComponent implements OnInit  {
   constructor(private miServicio: SisProdApiService, private http: HttpClient,
      private projectsService: ProjectsService, private changeDetectorRef: ChangeDetectorRef, 
      private activityService: ActivityService, private datePipe: DatePipe, private dataService: DataService
-     , private configService: ConfigService) {
+     , private configService: ConfigService,  private pulseService: PulseService) {
       
         this.apiURL = this.configService.getConfig('apiUrl') + 'Activity?ProjectId=';
         console.log("Activity url++++ :::" + this.apiURL);
@@ -66,6 +67,7 @@ export class ActivityComponent implements OnInit  {
   resultSumActivities: number = 0;
   popupEdit: boolean = false;
   showGraphic: boolean = false;
+  active_pulse: boolean = false;
 
   onProjectfilter(id: number){
     this.filterProjectId = id;
@@ -111,10 +113,16 @@ export class ActivityComponent implements OnInit  {
 }
 
   eliminarActivity(activity: Activity) {
-    this.activityService.deleteActivity(activity).subscribe(activities => {
-      this.listACtivities();    
-      //this.listActivities = activities;
-    });  
+    if (window.confirm('¿Estás seguro de que deseas eliminar esta actividad?')) {
+      this.activityService.deleteActivity(activity).subscribe(activities => {
+        this.listACtivities();    
+        //this.listActivities = activities;
+      });
+    }else{
+      console.log('Eliminación cancelada');
+    }
+    
+      
   }
 
   filterActivity(){
@@ -313,14 +321,11 @@ export class ActivityComponent implements OnInit  {
 // Inicializar el cronómetro
 //startTimer(activity: ActivityCronometro, registro: Activity) {
   startTimer(activity : Activity) {
-
-  //console.log("Actividad id" + activity.id);
-  //console.log("Actividad descripcion" + activity.descriptionProject);
+  
+  this.pulseService.activatePulse(activity.id);
   
   activity.isRunningWatch = true;
-  //this.CronometroactividadId = registro.id;
-  //this.CronometroactividadDescripcion = registro.description;
-
+  
   if (activity.stopTime) {
     activity.startTime = new Date().getTime() - (activity.stopTime - activity.startTime);
   } else {
@@ -335,6 +340,8 @@ export class ActivityComponent implements OnInit  {
 // Detener el cronómetro
 //stopTimer(activity: ActivityCronometro, registro: Activity) {
 stopTimer(activity : Activity) {
+  this.pulseService.deactivatePulse();
+
   activity.stopTime = new Date().getTime();
   clearInterval(activity.timer);
 }
@@ -359,7 +366,8 @@ stopTimer(activity : Activity) {
 
 // Guardar el tiempo transcurrido en la base de datos
 //saveTime(activity: ActivityCronometro, registro : Activity) {
-  saveTime(activity: Activity) {    
+  saveTime(activity: Activity) {   
+    this.pulseService.deactivatePulse(); 
     activity.isRunningWatch = false;
     const activityHora = new Activity();
     const hours = activity.hours + activity.timeElapsed / 3600000;

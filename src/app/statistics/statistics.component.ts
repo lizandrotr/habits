@@ -15,10 +15,23 @@ import { DataService } from '../service/data.service'; // Importa tu servicio
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit{
+  startDate: string = ''; 
+  stateFilter: string = ""; 
 
-constructor(private miServicio: SisProdApiService, private http: HttpClient,
-     private projectsService: ProjectsService, private changeDetectorRef: ChangeDetectorRef, 
-     private activityService: ActivityService, private datePipe: DatePipe, private dataService: DataService) { }
+  constructor(private miServicio: SisProdApiService, private http: HttpClient,
+    private projectsService: ProjectsService, 
+    private changeDetectorRef: ChangeDetectorRef, 
+    private activityService: ActivityService, 
+    private datePipe: DatePipe, 
+    private dataService: DataService) { 
+
+
+
+      // Formato yyyy-MM-dd
+      
+
+    }
+
   
   
 
@@ -31,8 +44,7 @@ constructor(private miServicio: SisProdApiService, private http: HttpClient,
   fechasArray: string[] = ['2023-10-12'];  
   hoursArray: number[] = [8];
   
-  startDate: string = ''; 
-  stateFilter: string = ""; 
+  
 
   //private apiURL = 'http://localhost:8082/api/Activity?ProjectId=';
   
@@ -97,8 +109,15 @@ constructor(private miServicio: SisProdApiService, private http: HttpClient,
     const month = (now.getMonth() + 1).toString().padStart(2, '0');
     const day = now.getDate().toString().padStart(2, '0');
     
-    this.date_start = `${year}-${month}-${day}`;
-    this.startDate = `${year}-${month}-${day}`;
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() - 7); // Resta 7 días
+
+    const yearEnd = currentDate.getFullYear();
+    const monthEnd = currentDate.getMonth() + 1; // Meses empiezan en 0
+    const dayEnd = currentDate.getDate();
+
+    this.date_start = `${yearEnd}-${monthEnd}-${dayEnd}`;
+    this.startDate = `${yearEnd}-${monthEnd.toString().padStart(2, '0')}-${dayEnd.toString().padStart(2, '0')}`;
     this.date_end = `${year}-${month}-${day}`;
     
     this.miServicio.obtenerProjects().subscribe((data) => {

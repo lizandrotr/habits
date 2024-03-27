@@ -3,7 +3,7 @@
   <div class="content-section" >
     <!-- Si el usuario no está logueado, muestra el router-outlet para las rutas de login y registro -->
     <div style="display: flex; align-items: center; border-bottom: 2px solid #f4f4f4; height: 100px;">
-      <img src="assets/Images/Torre-soft.jpeg" alt="Descriptive Alt Text" style="height: 100px; margin-right: 10px; padding: 10px;">
+      <img src="assets/Images/Torre-soft.jpeg" alt="Descriptive Alt Text" style="height: 100px; width: 100%;">
     </div>
     
     <div *ngIf="!authService.isLoggedIn()" >
@@ -30,7 +30,7 @@
               <img src="assets/Images/Estadistica.png" alt="Estadísticas"> Estadísticas
             </li>
           </ul>          
-          <button mat-raised-button color="warn" (click)="onLogout()">Cerrar Sesión</button>
+          <button mat-raised-button color="warn" (click)="onLogout()" class = "cerrar_sesion">Cerrar Sesión</button>
         </div>  
       </div>
       <div class="body-torresoft" style=" flex-grow: 1; overflow-x: auto;width: 100%" >

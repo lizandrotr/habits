@@ -10,13 +10,31 @@
     [attr.stroke-dasharray]="strokeDashArray"
     [ngStyle]="{'stroke-dashoffset': currentStrokeDashOffset + 'px'}"
     fill="transparent"
-    stroke="#239089"
+    stroke="#2e6f8c"
     stroke-width="10"
     transform="rotate(-90 40 40)"
   ></circle>
 
+  <ng-container *ngIf="activarPulso">
+    <path
+    fill="none"
+    stroke="#2e6f8c" 
+    stroke-width="2"
+    d="M10,40 Q15,20 20,40 T30,40 Q35,60 40,40 T50,40 Q55,20 60,40 T70,40 Q75,60 80,40 T90,40 Q95,20 100,40 T110,40 Q115,60 120,40 T130,40 Q135,20 140,40 T150,40 Q155,60 160,40 T170,40 Q175,20 180,40 T190,40 Q195,60 200,40 T210,40 Q215,20 220,40 T230,40 Q235,60 240,40 T250,40 Q255,20 260,40 T270,40 Q275,60 280,40 T290,40 Q295,20 300,40 T310,40 Q315,60 320,40 T330,40 Q335,20 340,40 T350,40 Q355,60 360,40 T370,40 Q375,20 380,40 T390,40 Q395,60 400,40 T410,40 Q415,20 420,40 T430,40 Q435,60 440,40 T450,40 Q455,20 460,40 T470,40 Q475,60 480,40 T490,40 Q495,20 500,40 T510,40">
+    <!-- La animación se ajusta para mantener el pulso dentro del círculo -->
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      from="-200,0" 
+      to="0,0"    
+      dur="5s"
+      repeatCount="indefinite"
+    />
+  </path>
+</ng-container>
+
   <!-- Texto de porcentaje -->
   <text x="40" y="45" text-anchor="middle" fill="black">
-    {{ valorActual / valorMaximo * 100 | number: '1.0-2' }}%
+    {{ calcularPorcentaje() | number: '1.0-2' }}%
   </text>
 </svg>

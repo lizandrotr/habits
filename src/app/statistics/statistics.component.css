@@ -1,0 +1,53 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px; /* Ajusta el espacio entre los grupos de formulario */
+    padding: 10px;
+}
+
+.filter {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten según el ancho de la pantalla */
+    justify-content: flex-start; /* Alinea los elementos al inicio del contenedor */
+}
+
+.filter label {
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el campo */
+}
+
+.date-input, .select-filter {
+    width: 100%; /* Asegura que los campos de entrada ocupen todo el ancho disponible */
+}
+
+.filter-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    height: 30px;
+    margin-top: 35px;
+}
+
+.filter-button:hover {
+    background-color: #2980b9;
+  }
+
+input[type="number"], 
+input[type="date"], 
+textarea {
+  width: 100%; /* Ancho completo */
+  padding: 8px; /* Espaciado interno */
+  border-radius: 4px; /* Esquinas redondeadas */
+  border: 1px solid #ccc; /* Borde sutil */
+  box-sizing: border-box; /* Box sizing */
+}
+
+.select-filter {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}

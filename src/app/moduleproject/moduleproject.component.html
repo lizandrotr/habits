@@ -111,7 +111,7 @@
       </div>
     
       <div class="popup-actions">
-        <button type="button" >Guardar</button>
+        <button type="button" (click) = "onSubmit()">Guardar</button>
         <button type="button" >Cancelar</button>
       </div>
     </div>
@@ -149,8 +149,8 @@
             <tr *ngFor="let project of listProjects">
                 <!--<td>{{ project.id }}</td>-->
                 <td>{{ project.description }}</td>
-                <td>{{ project.date_start }}</td>
-                <td>{{ project.date_finish }}</td>
+                <td>{{ project.date_start | date: 'yyyy-MM-dd'}}</td>
+                <td>{{ project.date_finish | date: 'yyyy-MM-dd'}}</td>
                 <td>{{ project.orden}}</td>
                 <td>{{ project.hours_day}}</td>
                 <td>

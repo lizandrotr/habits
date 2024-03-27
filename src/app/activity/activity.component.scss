@@ -51,7 +51,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #0077cc;
+    background-color:#2e6f8c;
     color: #fff;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -89,7 +89,7 @@
   
   .popup-save {
     border: none;
-    background-color: #0077cc;
+    background-color:#2e6f8c;
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
@@ -122,7 +122,8 @@
   }
   
   .running {
-    background-color: #36F702!important; /* Verde claro */
+    ///background-color: #36F702!important; 
+    background-color: white!important; 
   }
   /*.timer {
     float: right;
@@ -244,13 +245,13 @@ app-circle-progress {
   padding: 8px 15px;
   border: none;
   border-radius: 5px;
-  background-color: #3498db;
+  background-color: #2e6f8c;
   color: white;
   cursor: pointer;
 }
 
 .filter-button:hover {
-  background-color: #2980b9;
+  background-color: #005faa;
 }
 
 .top-text {
@@ -321,7 +322,7 @@ app-circle-progress {
 }
 
 .btn-reloj:hover {
-  background-color: #0077cc; /* Color de fondo al pasar el mouse */
+  background-color:#2e6f8c; /* Color de fondo al pasar el mouse */
   transform: translateY(-2px); /* Mover el botón ligeramente hacia arriba */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar sensación de elevación */
 }
@@ -335,7 +336,7 @@ app-circle-progress {
 .btn {
   margin: 10px; /* Espaciado alrededor del botón */
   padding: 10px 20px; /* Espaciado interno del botón, ajusta según necesites */
-  background-color: #005faa; /* Color de fondo del botón */
+  background-color: #2e6f8c; /* Color de fondo del botón */
   color: white; /* Color del texto del botón */
   border: none; /* Eliminar el borde por defecto */
   border-radius: 5px; /* Esquinas redondeadas del botón */
@@ -350,7 +351,7 @@ app-circle-progress {
 }
 
 .btn:hover {
-  background-color: #0077cc; /* Color de fondo al pasar el mouse */
+  background-color:#005faa; /* Color de fondo al pasar el mouse */
   transform: translateY(-2px); /* Mover el botón ligeramente hacia arriba */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar sensación de elevación */
 }
@@ -416,4 +417,17 @@ textarea {
 .popup-actions button[type="button"]:nth-child(2) {
   background-color: #f44336; /* Color para cancelar */
   color: white; /* Texto blanco */
+}
+
+.filter {
+  width: 65%;
+  /* Asegúrate de incluir cualquier otro estilo que necesites aquí */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Espacio entre cada grupo de etiqueta y campo */
+}
+
+.form-group:not(:first-child) {
+  margin-left: 20px;
 }

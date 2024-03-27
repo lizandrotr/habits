@@ -28,6 +28,7 @@
     list-style-type: none; /* Elimina los puntos de la lista */
     padding: 0; /* Sin relleno */
     margin: 0; /* Sin margen */
+
   }
   
   .menu-items li {
@@ -60,7 +61,7 @@
   }
   
   .menu-items img {
-    width: 60px; /* Controla el ancho de la imagen */
+    width: 35%;
     height: auto; /* Mantiene la proporción de la imagen */
     vertical-align: middle; /* Alinea la imagen verticalmente con el texto */
     margin-right: 5px; /* Espaciado entre la imagen y el texto */
@@ -74,6 +75,19 @@
     /*border: 1px solid red;*/
     height: 50px;
     /* Additional styling if needed */
+  }
+
+  .cerrar_sesion {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2e6f8c;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .cerrar_sesion:hover {
+    background-color: #005faa;
   }
 
   
