@@ -15,7 +15,7 @@
   /*menu*/
 
   .menu-container {
-    width: 300px; /* Ancho del menú */
+    width: 25%; /* Ancho del menú */
     height: 100vh; /* Altura completa de la ventana */
     background-color: #f5f5f5; /* Color de fondo del menú */
     position: fixed; /* Posición fija */

@@ -17,7 +17,7 @@
     <!-- Si el usuario está logueado, muestra el contenido de la aplicación -->
     <div *ngIf="authService.isLoggedIn()" style="display: flex; flex-wrap: nowrap;">
       
-      <div class="menu-section" *ngIf="authService.isLoggedIn()" style= "width: 300px; height: 300px; flex-shrink: 0;">
+      <div class="menu-section" *ngIf="authService.isLoggedIn()" style= "width: 25%; height: 300px; flex-shrink: 0;">
         <div class="menu-container">
           <ul class="menu-items">
             <li (click)="navigateToComponent('moduleprojectComponent')">

@@ -3,128 +3,81 @@
       <h3>Agregar Proyecto</h3>
       <button class="popup-close" (click)="togglePopup()">X</button>
     </div>
-  
-    <!--<div class="popup-body">
-      
-      <div class="popup-field">
-        <label>
-          Descripción Proyecto
-        </label>
-        <br>
-        <input type="text" [(ngModel)]="description" >
-      </div>
-      
-      <br>
-      
-      <div class="popup-field">
-        <label>
-          Descripción Proyecto
-        </label>
-        <br>
-        <textarea [(ngModel)]="comment"></textarea>
-      </div>
-      
-
-      <div class="popup-field">
-        <label>
-          Fecha Inicio
-        </label>
-        <br>
-        <input type="date" [(ngModel)]="date_start" >
-      </div>
-
-      <br>
-
-      <div class="popup-field">
-        <label>
-          Fecha Fin
-        </label>
-        <br>
-        <input type="date" [(ngModel)]="date_end" >
-      </div>
-      <br>
-      <div class="popup-field">
-        <label>
-          Orden
-        </label>
-        <br>
-        <input type="number" [(ngModel)]="orden" >
-      </div>
-
-      <div class="popup-field">
-        <label>
-          Horas por Día
-        </label>
-        <br>
-        <input type="number" [(ngModel)]="hours_day" >
-      </div>
-      
-      <br>
-      <label>
-        <input type="checkbox" [(ngModel)]="done">
-        Realizado?
-      </label>
-    </div>-->
-    <div class="popup-body">
-      <div class="popup-row" >
-        <div class="popup-field">
-          <label for="description">Descripción Proyecto</label>
-          <input type="text" id="description" [(ngModel)]="description">
+    
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+      <div class="popup-body">
+        <div class="popup-row">
+          <div class="popup-field">
+            <label for="description">Descripción Proyectoo</label>
+            <input type="text" formControlName="description">
+            <div *ngIf="projectForm.get('description')?.invalid && projectForm.get('description')?.touched">
+              Este campo es obligatorio.
+            </div>
+          </div>
+    
+          <div class="popup-field">
+            <label for="hours_day">Horas por Día</label>
+            <input type="number" formControlName="hours_day">
+            <div *ngIf="projectForm.get('hours_day')?.invalid && projectForm.get('hours_day')?.touched">
+              Este campo es obligatorio y debe ser mayor que 0.
+            </div>
+          </div>
         </div>
     
-        <div class="popup-field">
-          <label for="hours_day">Horas por Día</label>
-          <input type="number" id="hours_day" [(ngModel)]="hours_day">
+        <div class="popup-row">
+          <div class="popup-field">
+            <label for="date_start">Fecha Inicio</label>
+            <input type="date" formControlName="date_start">
+            <div *ngIf="projectForm.get('date_start')?.invalid && projectForm.get('date_start')?.touched">
+              Este campo es obligatorio.
+            </div>
+          </div>
+    
+          <div class="popup-field">
+            <label for="date_end">Fecha Fin</label>
+            <input type="date" formControlName="date_end">
+            <div *ngIf="projectForm.get('date_end')?.invalid && projectForm.get('date_end')?.touched">
+              Este campo es obligatorio.
+            </div>
+          </div>
+        </div>
+    
+        <div class="popup-row">
+          <div class="popup-field">
+            <label for="orden">Orden</label>
+            <input type="number" formControlName="orden">
+            <div *ngIf="projectForm.get('orden')?.invalid && projectForm.get('orden')?.touched">
+              Este campo es obligatorio y debe ser mayor que 0.
+            </div>
+          </div>
+    
+          <div class="popup-field checkbox-field">
+            <label>
+              <input type="checkbox" formControlName="done"> Realizado?
+            </label>
+          </div>
+        </div>
+        
+        <div class="popup-row">
+          <div class="popup-field comment-field">
+            <label for="comment">Comentarios</label>
+            <textarea formControlName="comment"></textarea>
+            <div *ngIf="projectForm.get('comment')?.invalid && projectForm.get('comment')?.touched">
+              Los comentarios no deben exceder los 200 caracteres.
+            </div>
+          </div>
+        </div>
+    
+        <div class="popup-actions">
+          <button type="submit">Guardar</button>
+          <button type="button">Cancelar</button>
         </div>
       </div>
+    </form>
     
-      <div class="popup-row">
-        <div class="popup-field">
-          <label for="date_start">Fecha Inicio</label>
-          <input type="date" id="date_start" [(ngModel)]="date_start">
-        </div>
+    
+</div>
 
-        <div class="popup-field">
-          <label for="date_end">Fecha Fin</label>
-          <input type="date" id="date_end" [(ngModel)]="date_end">
-        </div>
-      </div>
-    
-      <div class="popup-row">
-        <div class="popup-field">
-          <label for="orden">Orden</label>
-          <input type="number" id="orden" [(ngModel)]="orden">
-        </div>
-
-        <div class="popup-field checkbox-field">
-          <label>
-            <input type="checkbox" id="done" [(ngModel)]="done"> Realizado?
-          </label>
-        </div>
-      </div>
-      
-      <div class="popup-row">
-        <div class="popup-field comment-field">
-          <label for="comment">Comentarios</label>
-          <textarea id="comment" [(ngModel)]="comment"></textarea>
-        </div>
-      </div>
-    
-      <div class="popup-actions">
-        <button type="button" (click) = "onSubmit()">Guardar</button>
-        <button type="button" >Cancelar</button>
-      </div>
-    </div>
-    
-    
-  
-    <!--<div class="popup-footer">
-      <form (ngSubmit)="onSubmit()">
-        <button type="submit" >Guardar Proyectooo</button>
-      </form>
-    </div>-->
-  </div>
-  
   
   
   <div class="container">

@@ -8,6 +8,7 @@ import { ActivityService } from '../service/activity.service';
 import { DatePipe } from '@angular/common';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ConfigService } from '../service/config.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-moduleproject',
@@ -54,28 +55,21 @@ export class ModuleprojectComponent implements OnInit{
   listProjects: any[] = [];
 
   project: Projects = new Projects();
+  
+  projectForm = new FormGroup({
+    description: new FormControl('', Validators.required),
+    hours_day: new FormControl('', [Validators.required, Validators.min(1)]),
+    date_start: new FormControl('', Validators.required),
+    date_end: new FormControl('', Validators.required),
+    orden: new FormControl('', [Validators.required, Validators.min(1)]),
+    done: new FormControl(false),
+    comment: new FormControl('', Validators.maxLength(500))
+  });
 
   ngOnInit(): void {
     this.listaProjects();
 
-    /*this.configService.loadConfigToService().then(() => {
-      this.setupComponent();
-    });*/
   }
-
-  /*setupComponent() {
-    const apiUrl = this.configService.getConfig('apiUrl');
-    if (apiUrl) {
-      console.log("****setupComponent****");
-      this.apiURL = this.configService.getConfig('apiUrl')+'Project/register_update_project';
-    } else {
-      console.log("****else setupComponent****");
-    }
-  }*/
-
-  /*getProjectById(project: Projects){
-    this.showPopup = true;
-  }*/
 
   togglePopup() {
     this.showPopup = false;
@@ -87,56 +81,53 @@ export class ModuleprojectComponent implements OnInit{
   }
   
   onSubmit() {
-    // Aquí es donde puedes agregar la lógica para guardar los datos
-    console.log('Los datos se han guardado correctamente****', this.apiURL);
-    
-    //if(this.popupEdit == false ){  
-    
-    const url = `${this.apiURL}` + 'Project/register_update_project';
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
-      })
-    };
-
-    const data = {
-      //id: this.id.toString(),
-      id: this.id,
-      description: this.description,
-      date_start: this.date_start,
-      date_finish: this.date_end,
-      state: true,
-      done: this.done,
-      comment: this.comment,
-      goalsId : 0,
-      orden: this.orden,
-      hours_day: this.hours_day,
-      userId : this.userId
-    };
-
-    console.log(data);
-    this.http.post<any>(url, data, httpOptions).subscribe(
-      (response) => {
-        console.log("llamar al listado de actividades");
-
-        this.listaProjects();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if (this.projectForm.valid) {
+      console.log('Los datos se han guardado correctamente****', this.apiURL);
       
-    this.togglePopup();
-
-    /*}else{
-      console.log("if onSubmitUpdate");
-      this.onSubmitUpdate();    
-    }*/
+      const url = `${this.apiURL}Project/register_update_project`;
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'my-auth-token',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+        })
+      };
+  
+      // Obtener los valores desde el FormGroup
+      const formData = this.projectForm.value;
+  
+      const data = {
+        //id: this.id.toString(),
+        id: this.id,
+        description: formData.description,
+        date_start: formData.date_start,
+        date_finish: formData.date_end,
+        state: true,
+        done: formData.done,
+        comment: formData.comment,
+        goalsId : 0,
+        orden: formData.orden,
+        hours_day: formData.hours_day,
+        userId : this.userId
+      };
+  
+      console.log(data);
+      this.http.post<any>(url, data, httpOptions).subscribe(
+        (response) => {
+          console.log("llamar al listado de actividades");
+          this.listaProjects();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+        
+      this.togglePopup();
+    }  
   }
+  
 
   listaProjects(){
     this.projectsService.getProject().subscribe(projects => {
@@ -193,10 +184,13 @@ export class ModuleprojectComponent implements OnInit{
   }
   
   eliminarProject(project: Projects) {
-   
-    this.projectsService.deleteProject(project).subscribe(projects => {
-      this.listaProjects();     
-    });  
+    if (window.confirm('¿Estás seguro de que desea eliminar el registro?')) {
+      this.projectsService.deleteProject(project).subscribe(projects => {
+        this.listaProjects();     
+      });  
+    }else{
+      console.log('Eliminación cancelada');
+    }
   }
 
 }
