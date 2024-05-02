@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './service/auth.service'; 
 import { Router , NavigationEnd} from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { SurveyModalComponent } from './survey-modal/survey-modal.component';  // Asegúrate de tener la ruta correcta
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,7 @@ export class AppComponent {
   hours: number[] = [2, 1.5, 1.8];
   isLoginRoute: boolean = true;
 
-  constructor(public authService: AuthService, private router: Router) {
+  constructor(public authService: AuthService, private router: Router, public dialog: MatDialog) {
     console.log("AppComponent");
   }
 
@@ -35,8 +37,19 @@ export class AppComponent {
   }
 
   onLogout() {
-    this.authService.logout();  
-    this.router.navigate(['/']); 
+
+    const dialogRef = this.dialog.open(SurveyModalComponent, {
+      width: '300px',  
+      data: { }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El dialogo fue cerrado');
+      this.authService.logout();  
+      this.router.navigate(['/']); 
+    });
+
+
   }
 
   ngOnInit() {

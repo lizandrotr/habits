@@ -31,6 +31,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ConfigService } from './service/config.service';
+import { SurveyModalComponent } from './survey-modal/survey-modal.component';
+
+import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 export function tokenGetter() {
   return localStorage.getItem('userToken'); 
@@ -56,7 +62,8 @@ export function initializeApp(configService: ConfigService) {
     LoginComponent,
     ForgotPasswordComponent,
     RegisterComponent,
-    TestComponent
+    TestComponent,
+    SurveyModalComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +77,10 @@ export function initializeApp(configService: ConfigService) {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     RouterModule,
+    CommonModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,    
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
