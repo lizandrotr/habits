@@ -1,0 +1,60 @@
+.stars {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  mat-icon {
+    cursor: pointer; /* Hace que el cursor sea un puntero cuando se pasa sobre las estrellas */
+  }
+  
+  mat-icon {
+    font-size: 24px; /* Ajusta esto según el tamaño deseado */
+    margin-right: 4px; /* Espacio entre estrellas */
+  }
+  
+  .popup-actions {
+    text-align: center; /* Botones centrados */
+  }
+  
+  .popup-actions button {
+    padding: 10px 20px; /* Espaciado interno de botones */
+    border-radius: 4px; /* Esquinas redondeadas */
+    border: none; /* Sin borde */
+    margin: 0 10px; /* Espaciado entre botones */
+    cursor: pointer; /* Cursor de mano */
+  }
+
+  .save-button {
+    background-color: #4CAF50 !important; /* Color para guardar */
+    color: white; /* Texto blanco */
+  }
+  
+  .popup-actions button[type="button"]:nth-child(2) {
+    background-color: #f44336; /* Color para cancelar */
+    color: white; /* Texto blanco */
+  }
+
+  .comentarios {
+    width: 100%;  /* O el ancho que desees */
+    margin: auto;  /* Centra el contenedor si es más pequeño que el ancho de la página */
+  }
+
+  label, textarea {
+      width: 100%;
+      display: block;
+      box-sizing: border-box;
+  }
+
+  textarea {
+      height: 100px;
+  }
+
+  /* Stylesheet (e.g., styles.css) */
+  mat-icon {
+    color: grey; /* Color por defecto de las estrellas no seleccionadas */
+    cursor: pointer;
+  }
+
+  mat-icon.selected {
+    color: yellow; /* Cambia a amarillo cuando esté seleccionada */
+  }

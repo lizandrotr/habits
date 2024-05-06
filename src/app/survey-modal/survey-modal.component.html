@@ -1,20 +1,23 @@
 <!-- survey-modal.component.html -->
-<h2 mat-dialog-title>¿Qué te pareció el sistema?</h2>
+<h2 mat-dialog-title>Encuesta de Satisfacción</h2>
 <mat-dialog-content>
-  <form>
-    <p>
-      <mat-label>¿Qué calificación pondrías?</mat-label>
-      <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]" (click)="rate(star)">
-        {{ star <= rating ? 'star' : 'star_border' }}
-      </mat-icon>
-    </p>
-    <mat-form-field appearance="fill">
-      <mat-label>Cual es tu comentario</mat-label>
-      <textarea matInput></textarea>
-    </mat-form-field>
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <h2>¿Qué te pareció el sistema?</h2>
+    <div>
+      <p>¿Qué calificación pondrías?</p>
+      <span class="stars">
+        <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" (click)="rate(i + 1)">
+          {{ star <= rating ? 'star' : 'star_border' }}
+        </mat-icon>
+      </span>
+    </div>
+    <div class="comentarios">
+      <label for="comentario">¿Déjanos un comentario?</label>
+      <textarea id="comentario" formControlName="description"></textarea>
+    </div>  
+    <div class="popup-actions">
+      <button class = "save-button" type="submit">Guardar</button>
+      <button type="button">Cancelar</button>
+    </div> 
   </form>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Enviar</button>
-</mat-dialog-actions>
