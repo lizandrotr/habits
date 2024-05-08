@@ -120,7 +120,7 @@
       </thead>
       <tbody>
         <!--<tr *ngFor="let activities of listActivities" [ngClass]="{'tachado': activities.done}">-->
-        <tr *ngFor="let activities of listActivities" >  
+        <tr *ngFor="let activities of listActivities" [ngClass]="{'tachado': activities.done}">  
           <td class="activities_container" style="position: relative; height: 100%;">
             <div class="activities_project">
               {{activities.descriptionProject ? activities.descriptionProject : 'Otros' }} ( {{ activities.hours }} completadas de {{ activities.hours_day}}Hrs)

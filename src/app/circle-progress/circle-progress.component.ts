@@ -23,7 +23,11 @@ export class CircleProgressComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.strokeDashArray = 2 * Math.PI * this.radio;
     this.currentStrokeDashOffset = this.strokeDashArray;
-    this.finalStrokeDashOffset = this.strokeDashArray * (1 - (this.valorActual / this.valorMaximo));
+    if(this.valorActual <this.valorMaximo ){
+      this.finalStrokeDashOffset = this.strokeDashArray * (1 - (this.valorActual / this.valorMaximo));
+    }else{
+      this.finalStrokeDashOffset = -2;
+    }
 
     const animationDuration = 2000; // Duración de la animación en milisegundos
     const frameRate = 1000 / 60; // 60 FPS

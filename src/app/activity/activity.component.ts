@@ -50,6 +50,7 @@ export class ActivityComponent implements OnInit  {
   filterProjectId: number = 0;
   description: string = ''; 
   hours: number = 0; 
+  hours_day: number = 0;
   date_start: string = ''; 
   date_end : string = '';
   state: boolean = false; 
@@ -130,7 +131,7 @@ export class ActivityComponent implements OnInit  {
   }
 
   onSubmit() {
-    console.log('Los datos se han guardado correctamente****' + this.ProjectId);
+    console.log('Los datos se han guardado correctamente****');
     if(this.popupEdit == false ){  
     
     const url = `${this.apiURL}${this.ProjectId}`;
@@ -149,7 +150,7 @@ export class ActivityComponent implements OnInit  {
       hours: this.hours,
       date_start: this.date_start,
       state: true,
-      done: this.done
+      done: false
     };
     console.log("***11111111****");
     console.log(data);
@@ -177,9 +178,18 @@ export class ActivityComponent implements OnInit  {
     this.activity.id = this.id; 
     this.activity.description = this.description;
     this.activity.hours = this.hours;
+    //this.activity.hours_day = this.hours_day;
     this.activity.date_start = this.date_start;
     this.activity.state = true;
-    this.activity.done = this.done;
+    
+    console.log("this.hours"+this.hours);
+    console.log("this.hours"+this.hours_day);
+    if(this.hours >= this.hours_day ){
+      this.activity.done = true; 
+    }else{
+      this.activity.done = false;
+    }
+    
     this.activity.projectId = this.ProjectId;
    //console.log("onSubmitUpdate");
     console.log(this.activity);
@@ -240,6 +250,7 @@ export class ActivityComponent implements OnInit  {
     this.date_start = formattedDate ?? '';  
     this.state = activity.state; 
     this.done = activity.done;
+    this.hours_day = activity.hours_day;
     this.openPopup();
   }  
 
