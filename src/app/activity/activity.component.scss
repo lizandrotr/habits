@@ -131,7 +131,7 @@
   }*/
 
   .tachado {
-    background-color: #36F702!important;
+    background-color: #32CD32!important;
   }
 
   .proyecto-container {
@@ -179,7 +179,7 @@
 /* Estilo para resaltar la fila cuando está marcada como 'done' */
 tr.tachado {
   background-color: #f5f5f5;
-  text-decoration: line-through;
+  //text-decoration: line-through;
 }
 
 /* Estilo para resaltar la fila cuando está en progreso */

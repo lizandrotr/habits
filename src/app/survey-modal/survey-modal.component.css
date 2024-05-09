@@ -20,7 +20,7 @@
     padding: 10px 20px; /* Espaciado interno de botones */
     border-radius: 4px; /* Esquinas redondeadas */
     border: none; /* Sin borde */
-    margin: 0 10px; /* Espaciado entre botones */
+    margin-right: 10px; /* Espaciado entre botones */
     cursor: pointer; /* Cursor de mano */
   }
 
@@ -58,3 +58,9 @@
   mat-icon.selected {
     color: yellow; /* Cambia a amarillo cuando esté seleccionada */
   }
+
+  .popup-actions {
+    display: flex;
+    align-items: flex-start; /* Alinea los botones a la izquierda */
+  }
+  

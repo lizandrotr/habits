@@ -131,7 +131,7 @@ export class ActivityComponent implements OnInit  {
   }
 
   onSubmit() {
-    console.log('Los datos se han guardado correctamente****');
+    console.log('Los datos se han guardado correctamente****+++');
     if(this.popupEdit == false ){  
     
     const url = `${this.apiURL}${this.ProjectId}`;
@@ -150,7 +150,7 @@ export class ActivityComponent implements OnInit  {
       hours: this.hours,
       date_start: this.date_start,
       state: true,
-      done: false
+      done: this.done
     };
     console.log("***11111111****");
     console.log(data);
@@ -173,6 +173,12 @@ export class ActivityComponent implements OnInit  {
     }
   }
 
+  get formattedDescription() {
+    return this.description
+      .replace(/ /g, '&nbsp;') // Convierte espacios en entidades HTML
+      .replace(/\n/g, '<br>'); // Convierte saltos de línea en <br>
+  }
+
   onSubmitUpdate(){
     
     this.activity.id = this.id; 
@@ -187,7 +193,11 @@ export class ActivityComponent implements OnInit  {
     if(this.hours >= this.hours_day ){
       this.activity.done = true; 
     }else{
-      this.activity.done = false;
+      if(this.done == true){
+        this.activity.done = true;  
+      }else{
+        this.activity.done = false;
+      }
     }
     
     this.activity.projectId = this.ProjectId;

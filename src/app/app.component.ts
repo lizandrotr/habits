@@ -37,17 +37,17 @@ export class AppComponent {
   }
 
   onLogout() {
-      
+    console.log("onLogout1111");  
     const dialogRef = this.dialog.open(SurveyModalComponent, {
       width: '300px',  
       data: { }
     });
-  
-    /*dialogRef.afterClosed().subscribe(result => {
+    console.log("onLogout22222");  
+    dialogRef.afterClosed().subscribe(result => {
       console.log('El dialogo fue cerrado');
       this.authService.logout();  
       this.router.navigate(['/']); 
-    });*/
+    });
 
 
   }

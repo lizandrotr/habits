@@ -152,6 +152,7 @@ export class ModuleprojectComponent implements OnInit{
     this.done = project.done;
     this.comment = project.comment;
     this.orden = project.orden;
+    this.hours_day = project.hours_day;
     this.userId = project.userId;
     this.openPopup();
   }  

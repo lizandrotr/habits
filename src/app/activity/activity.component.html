@@ -54,6 +54,18 @@
       <textarea [(ngModel)]="description"></textarea>
     </div>
 
+    <div class="popup-row" >
+      <label for="Hábito">Tarea Realizada?</label>
+
+      <select [(ngModel)]="done" class="select-filter">
+        <option [ngValue]="false">Tarea no terminada</option>
+        <option [ngValue]="true">Tarea terminada</option>
+      </select>
+
+      <!--<input type="checkbox" [(ngModel)]="done">-->
+    </div>
+    
+
 
     <div class="popup-actions">
       <button type="button" (click) = "onSubmit()">Guardar</button>
@@ -131,9 +143,11 @@
             </div>
         </td>
           <td>
-            <div class="activities_description" style="text-align: justify; word-wrap: break-word">
-              {{activities.description}}
-            </div>
+            <div class="activities_description" 
+            style="text-align: justify; word-wrap: break-word; white-space: pre-wrap;">
+           {{activities.description}}
+       </div>
+       
           </td>
           <td>
             <div style="align-items: flex-start">

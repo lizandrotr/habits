@@ -14,6 +14,7 @@ export class SurveyModalComponent {
 
   rating = 0;
   comment: string = '';
+  showPopup: boolean = true;
 
   projectForm = new FormGroup({
     description: new FormControl('', Validators.required)
@@ -49,6 +50,9 @@ export class SurveyModalComponent {
     });
   }
 
+  closePopup(): void {
+    this.showPopup = false;
+  }
   ngOnInit() {
     this.comment = localStorage.getItem('comment') || '';
   }
