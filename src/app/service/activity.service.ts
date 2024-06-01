@@ -95,4 +95,16 @@ import { switchMap, catchError } from 'rxjs/operators';
       );
 
     }
+
+    createHabits(): Observable<Activity> {
+
+      return this.configService.config$.pipe(
+        switchMap(config => {
+          const formQuery = {};
+          const url = `${this.apiUrl}/createDailyHabits`;
+          return this.http.post<Activity>(url, formQuery);
+        })
+      );
+
+    }
   }

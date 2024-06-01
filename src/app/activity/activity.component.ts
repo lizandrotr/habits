@@ -130,6 +130,12 @@ export class ActivityComponent implements OnInit  {
     this.listACtivities()
   }
 
+  onSubmitHabits(){
+    this.activityService.createHabits().subscribe(result => { 
+      console.log(".......");
+    });
+  }
+  
   onSubmit() {
     console.log('Los datos se han guardado correctamente****+++');
     if(this.popupEdit == false ){  
