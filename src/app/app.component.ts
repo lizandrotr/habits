@@ -31,6 +31,12 @@ export class AppComponent {
         case 'statisticsComponent':
             this.router.navigate(['/statisticsComponent']); 
             break;
+        case 'loginComponent':
+              this.router.navigate(['/loginComponent']); 
+              break;  
+        case 'register':
+                this.router.navigate(['/register']); 
+                break;         
         default:
             console.error('Unknown component: ' + componentName);
     }

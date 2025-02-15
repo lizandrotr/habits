@@ -1,0 +1,153 @@
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 2px solid #f4f4f4;
+    height: 100px;
+  }
+  
+  .logo {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link {
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #005cbf;
+  }
+  
+  .register-button {
+    background-color: #000;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .register-button:hover {
+    background-color: #333;
+  }
+  
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .image-section1 {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .image-section2 {
+    flex: 1;
+    text-align: left;
+  }
+
+  .description-section1 {
+    flex: 1;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left;
+    min-width: 200px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.5; /* Ajusta este valor según sea necesario */
+  }
+  
+  .description-section2 {
+    flex: 1;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: right;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.5; /* Ajusta este valor según sea necesario */
+
+  }
+  
+  .description-section3 {
+    flex: 1;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    min-width: 200px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.5; /* Ajusta este valor según sea necesario */
+  }
+  .productivity-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .contenedor {
+    margin-top: 100px;
+  }
+  
+  @media (min-width: 0px) and (max-width: 600px)  {
+    
+    .description-section1 {
+      font-size: 16px;
+      text-align: center;
+    }
+  
+    .description-section2 {
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 1000px)  {
+    
+    .description-section1 {
+      font-size: 25px;
+      text-align: center;
+    }
+  
+    .description-section2 {
+      font-size: 19px;
+      text-align: center;
+    }
+  }
+  
+  @media (min-width: 1001px) {
+    .description-section1 {
+      font-size: 30px;
+      text-align: left;
+    }
+  
+    .description-section2 {
+      font-size: 24px;
+      text-align: right;
+    }
+  }
+
+  .productivity-image {
+    width: 500px;
+    height: auto; /* Mantiene la proporción original de la imagen */
+  }

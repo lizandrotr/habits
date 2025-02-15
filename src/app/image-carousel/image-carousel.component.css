@@ -1,0 +1,107 @@
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center; /* Centra el carrusel horizontalmente */
+  }
+  
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .carousel-item {
+    display: flex;
+    flex-direction: column; /* Coloca la descripción debajo de la imagen */
+    align-items: center; /* Centra la imagen y la descripción horizontalmente */
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .carousel-item img {
+    max-width: 1000px; /* Establece el tamaño máximo de la imagen */
+    width: 100%; /* Hace que la imagen sea responsive */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    position: relative;
+  }
+  
+  .carousel-caption {
+    margin-top: 10px; /* Añade un poco de espacio entre la imagen y la descripción */
+    
+    color: black;
+    padding: 5px 10px;
+    text-align: center; /* Centra el texto de la descripción */
+    width: 100%;
+    max-width: 1000px; /* Asegura que la descripción no sea más ancha que la imagen */
+    box-sizing: border-box;
+  }
+  
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: opacity 0.2s;
+  }
+  
+  .carousel-control.prev {
+    left: 10px; /* Ajusta la posición del botón "prev" */
+  }
+  
+  .carousel-control.next {
+    right: 10px; /* Ajusta la posición del botón "next" */
+  }
+  
+  .carousel-control:hover {
+    opacity: 0.8; /* Añade un efecto de hover */
+  }
+  
+  /* Asegúrate de que los controles sean visibles en tamaños de pantalla pequeños */
+  /*@media (max-width: 600px) {
+    .carousel-control {
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+    }
+    .carousel-caption {
+      font-size: 19px; 
+    }
+  }*/
+
+
+  @media (min-width: 0px) and (max-width: 600px)  {
+    .carousel-caption{
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 1000px)  {
+    .carousel-caption{
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+  }
+
+  @media (min-width: 1001px) {
+    .carousel-caption {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+  }
+  

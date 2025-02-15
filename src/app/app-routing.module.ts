@@ -4,12 +4,14 @@ import { ActivityComponent } from './activity/activity.component';
 import { ModuleprojectComponent } from './moduleproject/moduleproject.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { LoginComponent } from './login/login.component';
+import { IndexComponent } from './index/index.component';
 import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
 import { RegisterComponent } from './register/register.component';
 import { TestComponent } from './test/test.component';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth.guard';
 import { LoggedInGuard } from './logged-in.guard';
+import { NotLoggedInGuard } from './guards/not-logged-in.guard';
 
 const routes: Routes = [
   { path: 'activityComponent', component: ActivityComponent, canActivate: [LoggedInGuard] },
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'statisticsComponent', component: StatisticsComponent, canActivate: [LoggedInGuard] },
   { path: 'register', component: RegisterComponent , canActivate: [AuthGuard]},
   { path: 'test', component: TestComponent },
+  { path: 'loginComponent', component: LoginComponent },
+  { path: '', component: IndexComponent, canActivate: [NotLoggedInGuard] },
 ];
 
 @NgModule({

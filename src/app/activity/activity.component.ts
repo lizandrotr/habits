@@ -132,7 +132,7 @@ export class ActivityComponent implements OnInit  {
 
   onSubmitHabits(){
     this.activityService.createHabits().subscribe(result => { 
-      console.log(".......");
+      this.listACtivities();
     });
   }
   

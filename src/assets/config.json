@@ -1,4 +1,4 @@
 {
-  "apiUrl": "https://localhost:7114/api/",
+  "apiUrl": "http://localhost:81/api/",
   "otraConfiguracion": "valor"
 }

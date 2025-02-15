@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,  ValidationErrors } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private authService: AuthService) { 
+  constructor(private fb: FormBuilder, private http: HttpClient, private authService: AuthService, private router: Router) { 
     console.log('Componente Register se ha inicializado');
   }
 
@@ -37,6 +38,7 @@ export class RegisterComponent implements OnInit {
         response => {
           console.log("Registro exitoso", response);
           window.alert("Registro exitoso");
+          this.router.navigate(['/login']); 
         },
         error => {
           console.log("Error durante el registro", error);

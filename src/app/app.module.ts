@@ -37,6 +37,8 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ImageCarouselComponent } from './image-carousel/image-carousel.component';
+import { IndexComponent } from './index/index.component';
 
 export function tokenGetter() {
   return localStorage.getItem('userToken'); 
@@ -63,7 +65,9 @@ export function initializeApp(configService: ConfigService) {
     ForgotPasswordComponent,
     RegisterComponent,
     TestComponent,
-    SurveyModalComponent
+    SurveyModalComponent,
+    ImageCarouselComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

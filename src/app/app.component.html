@@ -2,22 +2,39 @@
   
   <div class="content-section" >
     <!-- Si el usuario no está logueado, muestra el router-outlet para las rutas de login y registro -->
-    <div style="display: flex; align-items: center; border-bottom: 2px solid #f4f4f4; height: 100px;">
-      <img src="assets/Images/Torre-soft.jpeg" alt="Descriptive Alt Text" style="height: 100px; width: 100%;">
+    <div class="fixed-header" *ngIf="!authService.isLoggedIn()">
+      <a href="/">
+        <img href="" src="assets/Images/Icon-Torre-soft.jpeg" alt="Descriptive Alt Text" class="logo">
+      </a>
+
+      <div class="nav-links" >
+        <!--<a href="/login" class="nav-link">Inicio de sesión</a>-->
+        <a (click)="navigateToComponent('loginComponent')" class="nav-link">Inicio de sesión</a>
+        <a (click)="navigateToComponent('register')" class="nav-link register-button">Registrarse</a>
+      </div>
     </div>
+
+    <div class="fixed-header" *ngIf="authService.isLoggedIn()">
+      <img href="" *ngIf="authService.isLoggedIn()" src="assets/Images/Torre-soft.jpeg" alt="Descriptive Alt Text" class="logo-login">
+    </div>
+
     
-    <div *ngIf="!authService.isLoggedIn()" >
+
+    <div class = "contenedor" *ngIf="!authService.isLoggedIn()">
+      
       <ng-container *ngIf="isLoginRoute; else registration">
-          <app-login></app-login>
+          
+        <router-outlet></router-outlet>
       </ng-container>
       <ng-template #registration>
           <router-outlet></router-outlet>
       </ng-template>
     </div>
+    
     <!-- Si el usuario está logueado, muestra el contenido de la aplicación -->
-    <div *ngIf="authService.isLoggedIn()" style="display: flex; flex-wrap: nowrap;">
+    <div *ngIf="authService.isLoggedIn()" style="display: flex; flex-wrap: nowrap" class = "cuerpo">
       
-      <div class="menu-section" *ngIf="authService.isLoggedIn()" style= "width: 25%; height: 300px; flex-shrink: 0;">
+      <div class="menu-section" *ngIf="authService.isLoggedIn()" style= "width: 25%; height: 300px; flex-shrink: 0; ">
         <div class="menu-container">
           <ul class="menu-items">
             <li (click)="navigateToComponent('moduleprojectComponent')">
@@ -37,5 +54,6 @@
         <router-outlet></router-outlet>
       </div>
     </div>
+    
   </div>
 </div>
